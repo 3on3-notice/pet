@@ -116,6 +116,7 @@ html:lang(ko) body{word-break:keep-all}
 .ph.empty .sm{font-size:11.5px;color:var(--t4)}
 .ph .mk{position:absolute;left:8px;top:8px;font-size:11px;font-weight:700;color:#fff;background:rgba(25,31,40,.72);border-radius:4px;padding:1px 6px}
 .fig figcaption{font-size:12.5px;color:var(--t3);margin-top:6px}
+.fig figcaption .lgy{display:block;margin-top:3px;font-size:12px;color:var(--t3)}
 /* 사진 위 번호(설명 항목과 짝) · 돋보기 */
 /* 번호 크기는 사진 폭에 비례(PC 880px 에서 26px) — 폰에서 캐릭터를 가리지 않게 최소 14px 까지 줄인다(10/28 피드백) */
 .ph{container-type:inline-size}
@@ -657,7 +658,8 @@ function photoHTML(key, marks, cls) {
   const inner = ph.src
     ? `<div class="ph"><img src="${esc(ph.src)}" alt="${esc(label)}" data-label="${esc(label)}" onerror="__phFail(this)">${pinsHTML(marks)}${ph.mock ? `<span class="mk">${esc(U().mock)}</span>` : ""}<button type="button" class="zoom" aria-label="${esc(U().zoom || "크게 보기")}">${SVG.zoom}</button></div>`
     : phEmpty(label);
-  return `<figure class="fig${cls ? " " + cls : ""}">${inner}${cap ? `<figcaption>${cap}</figcaption>` : ""}</figure>`;
+  const lg = ph.legacy && U().legacyPhoto ? `<span class="lgy">${U().legacyPhoto}</span>` : "";
+  return `<figure class="fig${cls ? " " + cls : ""}">${inner}${cap || lg ? `<figcaption>${cap || ""}${lg}</figcaption>` : ""}</figure>`;
 }
 // 설명 항목 번호: marks 가 있는 항목만 순서대로 1,2,3…
 function pinNums(marks) { let n = 0; return (marks || []).map(m => m ? ++n : 0); }

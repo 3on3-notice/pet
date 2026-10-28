@@ -11,7 +11,7 @@ window.NOTICE = {
       search: "펫 이름·능력 검색", all: "전체", unit: "종",
       grade: { P: "플래티넘", G: "골드", S: "실버", B: "브론즈" },
       unique: "고유 능력", maxLv: "만렙", sub: "서브 능력", subUp: "서브 강화", feedExp: "재료 경험치", how: "얻는 방법",
-      subsCan: "이 등급에 붙을 수 있는 서브 능력 {n}종 · 초기 수치", prev: "이전", next: "다음", close: "닫기", none: "없음", photo: "사진 준비 중", issues: "확인된 이슈",
+      subsCan: "이 등급에 붙을 수 있는 서브 능력 {n}종 · 초기 수치", prev: "이전", next: "다음", close: "닫기", none: "없음", photo: "사진 준비 중", legacyPhoto: "※ 사진 속 펫은 개편 전부터 가지고 있던 펫이라, 기존 능력이 고유 능력으로 표시됩니다. 새로 얻는 펫의 고유 능력은 펫 정보에서 확인할 수 있습니다.", issues: "확인된 이슈",
       gradeInfo: {
         P: { sub: "3칸 (Lv.3 · 6 · 9 해금)", up: "Lv.12 · 15", how: "<b>골드 펫 조합</b>에 성공(25%)하면 얻을 수 있습니다." },
         G: { sub: "2칸 (Lv.3 · 6 해금)", up: "Lv.9", how: "<b>입양</b> 시 5% 확률(골드 15종 중 하나)로 나오거나, <b>실버 펫 조합</b>에 성공(40%)하면 얻을 수 있습니다." },
@@ -113,7 +113,7 @@ window.NOTICE = {
           { type: "facts", label: "가지고 있던 펫", items: [
             ["종류 · 외형 · 등급", "그대로 유지됩니다."],
             ["레벨", "해당 등급의 최대 레벨이 됩니다."],
-            ["능력", "고유 능력 1개만 가지며, 서브 능력은 없습니다."],
+            ["능력", "개편 전에 가지고 있던 능력이 고유 능력 1개로 남으며, 서브 능력은 없습니다. 그래서 새로 얻는 같은 펫과 고유 능력이 다를 수 있습니다."],
             ["우편함 · 패키지 속 기존 펫", "받을 때 위와 같은 방식으로 바뀌어 지급됩니다."] ] } ] },
 
       { id: "events", nav: "한정 이벤트", title: "지금 어떤 이벤트가 진행 중인가요?", q: "10/28 업데이트와 함께 진행 중인 한정 이벤트를 모았습니다. 기간과 보상을 확인하고 참여해보세요!",
@@ -146,7 +146,7 @@ window.NOTICE = {
       search: "Search by pet name or ability", all: "All", unit: " types",
       grade: { P: "Platinum", G: "Gold", S: "Silver", B: "Bronze" },
       unique: "Unique Ability", maxLv: "Max Level", sub: "Sub Ability", subUp: "Sub Ability Upgrade", feedExp: "EXP as Material", how: "How to Get",
-      subsCan: "Sub Abilities this grade can get ({n}) · Initial Value", prev: "Previous", next: "Next", close: "Close", none: "None", photo: "Image coming soon", issues: "Known Issues",
+      subsCan: "Sub Abilities this grade can get ({n}) · Initial Value", prev: "Previous", next: "Next", close: "Close", none: "None", photo: "Image coming soon", legacyPhoto: "※ The pet in this picture was obtained before the renewal, so its previous ability is shown as its Unique Ability. See Pet Info for the Unique Abilities of newly obtained pets.", issues: "Known Issues",
       gradeInfo: {
         P: { sub: "3 slots (unlocked at Lv.3 · 6 · 9)", up: "Lv.12 · 15", how: "You can get one by succeeding at a <b>Gold pet Combination</b> (25%)." },
         G: { sub: "2 slots (unlocked at Lv.3 · 6)", up: "Lv.9", how: "Appears through <b>Adoption</b> at a 5% rate (1 of 15 Gold pets), or by succeeding at a <b>Silver pet Combination</b> (40%)." },
@@ -248,7 +248,7 @@ window.NOTICE = {
           { type: "facts", label: "Pets You Owned", items: [
             ["Type · Look · Grade", "Kept as they were."],
             ["Level", "Set to the max level of their grade."],
-            ["Abilities", "1 unique ability only, with no sub abilities."],
+            ["Abilities", "The ability the pet had before the renewal remains as its 1 Unique Ability, with no Sub Abilities. This means its Unique Ability may differ from the same pet obtained newly."],
             ["Old Pets in Mail · Packages", "Converted the same way when you claim them."] ] } ] },
 
       { id: "events", nav: "Limited Events", title: "What events are on now?", q: "Limited-time events running with the Oct. 28th update. Check the period and rewards, and join before they end!",
@@ -281,7 +281,7 @@ window.NOTICE = {
       search: "ペット名・能力で検索", all: "すべて", unit: "種",
       grade: { P: "プラチナ", G: "ゴールド", S: "シルバー", B: "ブロンズ" },
       unique: "固有能力", maxLv: "最大レベル", sub: "サブ能力", subUp: "サブ能力強化", feedExp: "素材経験値", how: "入手方法",
-      subsCan: "この等級に付く可能性のあるサブ能力 {n}種・初期数値", prev: "前へ", next: "次へ", close: "閉じる", none: "なし", photo: "画像準備中", issues: "確認されている不具合",
+      subsCan: "この等級に付く可能性のあるサブ能力 {n}種・初期数値", prev: "前へ", next: "次へ", close: "閉じる", none: "なし", photo: "画像準備中", legacyPhoto: "※ 写真のペットはリニューアル前から所持していたペットのため、以前の能力が固有能力として表示されています。新しく入手するペットの固有能力はペット情報で確認できます。", issues: "確認されている不具合",
       gradeInfo: {
         P: { sub: "3枠（Lv.3 · 6 · 9で解放）", up: "Lv.12 · 15", how: "<b>ゴールドペットの合成</b>に成功（25%）すると入手できます。" },
         G: { sub: "2枠（Lv.3 · 6で解放）", up: "Lv.9", how: "<b>養子縁組</b>で5%の確率（ゴールド15種のうち1体）で登場するほか、<b>シルバーペットの合成</b>に成功（40%）すると入手できます。" },
@@ -383,7 +383,7 @@ window.NOTICE = {
           { type: "facts", label: "お持ちだったペット", items: [
             ["種類・外見・等級", "そのまま維持されます。"],
             ["レベル", "その等級の最大レベルになります。"],
-            ["能力", "固有能力1つのみで、サブ能力はありません。"],
+            ["能力", "リニューアル前に持っていた能力が固有能力1つとして残り、サブ能力はありません。そのため、新しく入手した同じペットとは固有能力が異なる場合があります。"],
             ["メールボックス・パッケージ内の以前のペット", "受け取り時に同じ方法で変換されて付与されます。"] ] } ] },
 
       { id: "events", nav: "期間限定イベント", title: "今どんなイベントが開催中ですか？", q: "10/28アップデートとともに開催中の期間限定イベントをまとめました。期間と報酬を確認して、ぜひ参加してください！",
