@@ -124,8 +124,8 @@ html:lang(ko) body{word-break:keep-all}
 .ph .zoom:hover{background:rgba(25,31,40,.9)}
 .pnum{display:inline-grid;place-items:center;flex:none;width:20px;height:20px;margin-right:6px;border-radius:50%;background:var(--or);color:#fff;font-size:11.5px;font-weight:800;vertical-align:1px}
 .facts.pn>div{grid-template-columns:144px minmax(0,1fr)}
-.facts.pn dt{position:relative;padding-left:24px}
-.facts.pn .pnum{position:absolute;left:0;top:3px;width:17px;height:17px;margin:0;font-size:10.5px}
+/* 번호는 항목 이름 뒤에 작게: '화면 구성 ①' (10/28 피드백) */
+.facts.pn .pnum{width:16px;height:16px;margin:0 0 0 5px;font-size:10px;vertical-align:1px}
 /* 크게 보기 */
 .lb{position:fixed;inset:0;z-index:60;background:rgba(10,14,20,.92);display:none;align-items:center;justify-content:center;padding:44px 12px 12px;cursor:zoom-out}
 .lb.on{display:flex}
@@ -722,8 +722,8 @@ const R = {
   table: b => box(b, `${descHTML(b.text)}<div class="tw"><table class="t"><thead><tr>${(b.head || []).map(h => `<th scope="col">${h}</th>`).join("")}</tr></thead><tbody>${(b.rows || []).map(r =>
     `<tr>${r.map((c, j) => { if (j) return `<td>${c}</td>`; const k = gradeOf(c); return `<th scope="row">${k ? `<i class="gdot" style="${gVars(k)}"></i>` : ""}${c}</th>`; }).join("")}</tr>`).join("")}</tbody></table></div>${noteHTML(b.note)}`),
   facts: b => { const nums = pinNums(b.marks);
-    // 번호는 글줄 밖 왼쪽 칸에 작은 아이콘으로 — 번호가 있든 없든 항목 이름의 시작 위치를 같게(10/28 피드백)
-    return box(b, `${descHTML(b.text)}<dl class="facts${nums.some(Boolean) ? " pn" : ""}">${(b.items || []).map((f, i) => `<div><dt>${nums[i] ? `<span class="pnum">${nums[i]}</span>` : ""}${f[0] || ""}</dt><dd>${f[1] || ""}</dd></div>`).join("")}</dl>${noteHTML(b.note)}`); },
+    // 번호는 항목 이름 뒤에 작게('화면 구성 ①') — 항목 이름은 모두 같은 위치에서 시작(10/28 피드백)
+    return box(b, `${descHTML(b.text)}<dl class="facts${nums.some(Boolean) ? " pn" : ""}">${(b.items || []).map((f, i) => `<div><dt>${f[0] || ""}${nums[i] ? `<span class="pnum">${nums[i]}</span>` : ""}</dt><dd>${f[1] || ""}</dd></div>`).join("")}</dl>${noteHTML(b.note)}`); },
   bars: b => box(b, `${descHTML(b.text)}<ul class="bars">${(b.items || []).map(x => {
     const k = gradeOf(x[0]), v = Math.max(0, Math.min(100, parseFloat(x[1]) || 0));
     const pc = typeof x[1] === "number" ? x[1] + "%" : (x[1] || "");
