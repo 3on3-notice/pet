@@ -37,6 +37,9 @@ window.PHOTOS = {
     cap: {"kr": "이 등급의 펫에 붙을 수 있는 서브 능력과 최대 값입니다.", "en": "Sub Abilities and max values that can appear on pets of this grade.", "jp": "この等級のペットに付く可能性のあるサブ能力と最大値です。"} },
 };
 window.PET_ICONS = {
+  "빅맨 코치 모노클": "img/pets/40100601.png",
+  "수비 코치 모노클": "img/pets/40100602.png",
+  "슈팅 코치 모노클": "img/pets/40100603.png",
   "블랙 사이버 드론": "img/pets/40050101.png",
   "레드 사이버 드론": "img/pets/40050102.png",
   "화이트 로봇청소기": "img/pets/40060102.png",

@@ -224,16 +224,94 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
 .dd-badge.end{background:var(--line2);color:var(--t3)}
 .dd-badge:empty{display:none}
 .dl-v{font-size:20px;font-weight:800;letter-spacing:-.3px;margin-bottom:12px}
-/* 한정 이벤트 카드 */
-.ev{padding:0;overflow:hidden}
+/* ── 변경 펫 개요 (기획 PDF 구성) ── */
+.eyb{font-size:12px;font-weight:800;letter-spacing:.4px;color:var(--or);margin-bottom:2px}
+.blk h3.lg{font-size:19px;font-weight:800;letter-spacing:-.4px;margin-bottom:14px}
+.keys{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.keys li{border:1px solid var(--line);border-radius:10px;padding:14px 14px 15px;background:#FBFBFC}
+.keys .kn{display:block;font-size:13px;font-weight:800;color:var(--or)}
+.keys b{display:block;font-size:15px;margin:4px 0 2px}
+.keys p{font-size:12.5px;color:var(--t2);line-height:1.5}
+.duo,.gro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.gro{grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr)}
+.duo-c{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#FBFBFC}
+.duo-c.aft{border-color:var(--or);background:#FFF9F5}
+.tagp{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--line2);color:var(--t2);margin-bottom:10px}
+.tagp.on{background:var(--or);color:#fff}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.fs{font-size:13.5px;font-weight:600;padding:7px 12px;border-radius:7px;background:#fff;border:1px solid var(--line)}
+.fs.hot{background:var(--or);border-color:var(--or);color:#fff}
+.fa{font-style:normal;color:var(--t4);font-weight:700}
+.dn{margin-top:10px;font-size:12.5px;color:var(--t3);border:1px dashed var(--line);border-radius:7px;padding:8px 10px}
+.ck{margin-top:10px;font-size:13px;color:var(--t1)}
+.old1{border:1px solid var(--line);border-radius:8px;background:#fff;padding:10px 12px}
+.old1 small{display:block;font-size:11.5px;color:var(--t3)}.old1 b{font-size:15px}
+.pcard{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.pcard .pic{flex:none;width:58px;height:58px;border-radius:12px;background:#fff;border:1px solid var(--line);overflow:hidden;display:grid;place-items:center}
+.pcard .pic img{width:100%;height:100%;object-fit:contain}
+.pin2{flex:1;min-width:0}.pin2 b{font-size:15px}.lvt{font-size:12px;color:var(--t3)}
+.pbar{height:6px;border-radius:3px;background:var(--line2);margin-top:6px;overflow:hidden}.pbar i{display:block;height:100%;background:var(--or)}
+.slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.slot{border-radius:8px;padding:8px 9px;background:#fff;border:1px solid var(--line);min-height:76px}
+.slot small{display:block;font-size:11px;color:var(--t3)}.slot b{display:block;font-size:12.5px;line-height:1.35;margin:2px 0}.slot span{font-size:11px;color:var(--t3)}
+.slot.uq{background:var(--or);border-color:var(--or)}.slot.uq small,.slot.uq span,.slot.uq b{color:#fff}
+.slot.lock{border-style:dashed;background:transparent}
+.road{margin-top:12px;border:1px solid var(--line);border-radius:10px;padding:14px 16px 12px;background:#FBFBFC}
+.road h4,.sub1 h4,.evc h4{font-size:14px;font-weight:700;margin-bottom:8px}
+.road ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;align-items:end}
+.road li b{display:block;font-size:14px;font-weight:800}.road li span{display:block;font-size:12px;color:var(--t3);margin-bottom:6px}
+.road li i{display:block;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--or),#FFB38A)}
+.road p{font-size:12px;color:var(--or-d);margin-top:8px}
+.pools{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:16px;align-items:start}
+.tier{border:1.5px solid var(--g);border-radius:12px;padding:10px 12px 12px;background:#fff}
+.tier .tier{margin-top:10px}
+.tier.p{background:var(--gb)}
+.th{display:flex;justify-content:space-between;gap:8px;margin-bottom:6px}.th b{font-size:13.5px;color:var(--gd)}.th span{font-size:12px;color:var(--t3);white-space:nowrap}
+.pchips{display:flex;flex-wrap:wrap;gap:4px}.pchips li{font-size:11.5px;padding:2px 8px;border-radius:999px;background:var(--line2);color:var(--t2)}
+.leg li{display:flex;gap:8px;align-items:baseline;font-size:13.5px;margin-bottom:6px}.leg li i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--g)}
+.leg p{font-size:13px;color:var(--t2);margin-top:8px}
+.acq .sub1{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#FBFBFC}
+.acq2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-top:12px}
+.was{font-size:12.5px;color:var(--t3);margin-left:6px}
+.eq{display:flex;align-items:center;gap:10px}.eq div{flex:1;text-align:center;border:1px solid var(--line);border-radius:8px;background:#fff;padding:8px}
+.eq small{display:block;font-size:11px;color:var(--t3)}.eq b{font-size:16px}.eq i{font-style:normal;font-weight:800;color:var(--or);font-size:18px}
+.acq2 p{font-size:13px;color:var(--t2);margin-top:8px}
+.plat li{display:flex;justify-content:space-between;gap:8px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:8px 12px;margin-bottom:6px;font-size:13.5px}
+.plat li.no span{color:#D84A3A;font-weight:700}.plat li.ok{border-color:#3FB6C6;background:#F1FBFC}.plat li.ok span{color:#178FA0;font-weight:700}
+.plat+.was{margin-left:0}
+.evc{border:1px solid #9ADCE6;background:#F3FBFD;border-radius:12px;padding:16px 18px}
+.evc-t{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.evb{display:inline-block;font-size:11.5px;font-weight:700;background:#BDEFF6;color:#0F6E7C;border-radius:999px;padding:2px 9px}
+.evn{display:block;font-size:17px;margin:6px 0 2px}.evc-t p{font-size:13px;color:var(--t2)}
+.evw small{display:block;font-size:11.5px;color:var(--t3);margin-bottom:4px}.evw span{display:inline-block;font-size:12.5px;font-weight:600;background:#fff;border:1px solid var(--line);border-radius:6px;padding:4px 9px;margin:0 4px 4px 0}
+.evr{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px}
+.evr li{background:#fff;border:1px solid #CFEFF4;border-radius:8px;padding:8px 10px}.evr li b{display:block;font-size:13px;color:#0F6E7C}.evr li span{font-size:12px;color:var(--t2)}
+.evr li.last{background:#8FE3EE;border-color:#8FE3EE}.evr li.last span{color:var(--t1)}
+.evlink{display:inline-block;margin-top:10px;font-size:13px;font-weight:700;color:#0F6E7C;text-decoration:none}
+@media (max-width:759px){
+  .keys{grid-template-columns:1fr 1fr}.duo,.gro,.pools,.acq2{grid-template-columns:minmax(0,1fr)}
+  .slots{grid-template-columns:1fr 1fr}.blk h3.lg{font-size:17px}
+}
+/* 한정 이벤트 카드 — 작게: PC 는 배너를 왼쪽 썸네일(300px)로, 글·표도 한 단계 작게 (10/28 "너무 커, 줄여") */
+.ev{padding:0;overflow:hidden;margin-bottom:10px}
 .ev-img{background:var(--line2);border-bottom:1px solid var(--line)}
 .ev-img img{display:block;width:100%;height:auto}
-.ev-bd{padding:20px 24px 22px}
-.ev-h{display:flex;align-items:center;gap:8px;margin-bottom:4px}
-.ev-h h3{margin-bottom:0}
-.ev-p{font-size:13.5px;color:var(--t3);margin-bottom:12px}
-.ev .tw{margin:12px 0}
-.ev .chips{margin-top:10px}
+.ev-bd{padding:14px 18px 16px}
+.ev-h{display:flex;align-items:center;gap:8px;margin-bottom:2px}
+.ev-h h3{margin-bottom:0;font-size:15px}
+.ev-p{font-size:12.5px;color:var(--t3);margin-bottom:8px}
+.ev .desc{font-size:13.5px;margin-bottom:8px}
+.ev .tw{margin:8px 0 0}
+.ev .t{font-size:12.5px;min-width:0}
+.ev .t th,.ev .t td{padding:6px 10px}
+.ev .chips{margin-top:8px}
+.ev .chips li{font-size:12px;padding:3px 10px}
+.ev .note{font-size:12px;margin-top:8px}
+@media (min-width:760px){
+  .ev:has(.ev-img){display:grid;grid-template-columns:300px minmax(0,1fr);align-items:start}
+  .ev-img{border-bottom:0;border-right:1px solid var(--line);align-self:stretch}
+  .ev-img img{height:100%;object-fit:cover;object-position:left center}
+}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chips li{font-size:13px;color:var(--t2);background:var(--line2);border-radius:999px;padding:5px 12px}
 .chips em{font-style:normal;font-weight:700;color:var(--t1)}
@@ -586,7 +664,7 @@ const hasPhotoBlock = k => ((N[L] || {}).chapters || []).some(c => (c.blocks || 
 const noteHTML = n => n ? `<p class="note">※ ${n}</p>` : "";
 const descHTML = t => t ? `<p class="desc">${t}</p>` : "";
 function box(b, inner, cls) {
-  const head = b.label ? `<h3>${b.label}</h3>` : "";
+  const head = (b.eyebrow ? `<p class="eyb">${b.eyebrow}</p>` : "") + (b.label ? `<h3${b.eyebrow ? ' class="lg"' : ""}>${b.label}</h3>` : "");
   // 사진이 붙은 블록은 id="ph-<사진키>" — '펫 메뉴 구성'의 각 칸이 이 칸으로 바로 이동한다
   if (b.photo) return `<div class="blk wp ${cls || ""}" id="ph-${esc(b.photo)}">${head}${photoHTML(b.photo, b.marks, "big")}<div class="cm">${inner}</div></div>`;
   return `<div class="blk ${cls || ""}">${head}${inner}</div>`;
@@ -639,6 +717,60 @@ const R = {
     return `<div class="sg" style="${k ? gVars(k) : ""}"><h4><i class="gdot"></i>${g.g || ""}</h4><ul>${(g.rows || []).map(r => `<li><s>${r[0] || ""}</s><span class="ar">→</span><b>${r[1] || ""}</b></li>`).join("")}</ul></div>`;
   }).join("")}</div>${noteHTML(b.note)}`),
   deadline: b => `<div class="blk"><details class="fold"${!b.fold || SHOT ? " open" : ""}><summary><h3>${b.label || ""}</h3><span class="dd-badge" data-dl="${esc(b.deadline || "")}"></span>${SVG.chev}</summary><div class="fold-bd">${descHTML(b.text)}${b.v ? `<div class="dl-v">${b.v}</div>` : ""}${(b.items || []).length ? `<ul class="chips">${b.items.map(x => `<li>${x}</li>`).join("")}</ul>` : ""}${noteHTML(b.note)}</div></details></div>`,
+  /* ── 변경 펫 개요(기획 PDF '펫 가이드 · 변경점 오버뷰' 10/28 구성) ── */
+  // 핵심 변경점 카드 01~05
+  keys: b => `<div class="blk"><ol class="keys">${(b.items || []).map((k, i) => `<li><span class="kn">${String(i + 1).padStart(2, "0")}</span><b>${k[0]}</b><p>${k[1]}</p></li>`).join("")}</ol></div>`,
+  // 기존 → 변경 흐름 두 칸 + 아래 알림
+  duo: b => {
+    const flow = (f, hot) => `<div class="flow">${(f || []).map((s, i, a) => `<span class="fs${hot && i === a.length - 1 ? " hot" : ""}">${s}</span>${i < a.length - 1 ? '<i class="fa">→</i>' : ""}`).join("")}</div>`;
+    const side = (s, after) => `<div class="duo-c${after ? " aft" : ""}"><span class="tagp${after ? " on" : ""}">${s.tag}</span>${flow(s.flow, after)}${s.note ? `<p class="dn">${s.note}</p>` : ""}${s.check ? `<p class="ck">✓ ${s.check}</p>` : ""}</div>`;
+    return box(b, `<div class="duo">${side(b.before || {}, false)}${side(b.after || {}, true)}</div>${b.alert ? `<div class="alert" style="margin:14px 0 0"><span class="ic" aria-hidden="true">!</span><div>${b.alert}</div></div>` : ""}`);
+  },
+  // 능력 구조: 기존 1칸 vs 변경 펫 카드(예시 펫) + 레벨업 로드맵
+  growth: b => {
+    const a = b.after || {}, p = PETS.find(x => x.kr === a.pet) || PETS[0], gmax = (GD[p.grade] || {}).max || 15;
+    const sub = k => { const s = SUBS.find(x => x.name && x.name.kr === k); return s ? tx(s.name) : k; };
+    const slots = (a.slots || []).map((s, i) => i === 0
+      ? `<div class="slot uq"><small>${s[0]}</small><b>${esc(abil(p))}</b><span>${s[2]}</span></div>`
+      : s[1] ? `<div class="slot"><small>${s[0]}</small><b>${esc(sub(s[1]))}</b><span>${s[2]}</span></div>`
+             : `<div class="slot lock"><small>${s[0]}</small><b aria-hidden="true">🔒</b><span>${s[2]}</span></div>`).join("");
+    const bf = b.before || {}, rm = b.roadmap || {};
+    return box(b, `<div class="gro">
+      <div class="duo-c"><span class="tagp">${bf.tag}</span><div class="old1"><small>${bf.k}</small><b>${bf.v}</b></div><p class="dn">${bf.note || ""}</p></div>
+      <div class="duo-c aft"><span class="tagp on">${a.tag}</span>
+        <div class="pcard" style="${gVars(p.grade)}"><div class="pic">${iconHTML(p)}</div><div class="pin2"><b>${esc(petName(p))}</b> <span class="gbadge"><i></i>${esc((U().grade || {})[p.grade] || "")}</span> <span class="lvt">Lv.${a.lv} / ${gmax}</span><div class="pbar"><i style="width:${Math.round(a.lv / gmax * 100)}%"></i></div></div></div>
+        <div class="slots">${slots}</div></div></div>
+      <div class="road"><h4>${rm.label || ""}</h4><ol>${(rm.steps || []).map((s, i, arr) => `<li><b>${s[0]}</b><span>${s[1]}</span><i style="height:${14 + i * (40 / Math.max(1, arr.length - 1))}px"></i></li>`).join("")}</ol><p>${rm.note || ""}</p></div>${noteHTML(b.note)}`);
+  },
+  // 서브 능력 등장 풀: 실버 ⊃ 골드 ⊃ 플래티넘 겹침 상자 + 설명
+  pools: b => {
+    const has = g => SUBS.filter(s => (s.grades || []).indexOf(g) >= 0);
+    const only = (g, inner) => has(g).filter(s => (s.grades || []).indexOf(inner) < 0);
+    const chips = arr => `<ul class="pchips">${arr.map(s => `<li>${esc(tx(s.name))}</li>`).join("")}</ul>`;
+    const t = b.tiers || {}, u = U(), n = g => has(g).length;
+    const unit = u.unit || "";
+    return box(b, `<div class="pools"><div class="nest">
+      <div class="tier s" style="${gVars("S")}"><div class="th"><b>${t.S}</b><span>${n("S")}${unit}</span></div>${chips(only("S", "G"))}
+        <div class="tier g" style="${gVars("G")}"><div class="th"><b>${t.G}</b><span>${n("G")}${unit}</span></div>${chips(only("G", "P"))}
+          <div class="tier p" style="${gVars("P")}"><div class="th"><b>${t.P}</b><span>${n("P")}${unit}</span></div>${chips(has("P"))}</div></div></div></div>
+      <div class="leg"><ul>${(b.legend || []).map(l => `<li style="${gVars(l[0])}"><i></i>${l[1]}</li>`).join("")}</ul><p>${b.foot || ""}</p></div></div>`);
+  },
+  // 획득 방법: 입양 위치 + 재화(코인 = 포인트) + 플래티넘 얻는 곳
+  acquire: b => {
+    const pa = b.path || {}, cu = b.cur || {}, pl = b.plat || {};
+    return box(b, `<div class="acq"><div class="sub1"><h4>${pa.label}</h4><div class="flow">${(pa.steps || []).map((s, i, a) => `<span class="fs${i === a.length - 1 ? " hot" : ""}">${s}</span>${i < a.length - 1 ? '<i class="fa">›</i>' : ""}`).join("")}<span class="was">${pa.before || ""}</span></div></div>
+      <div class="acq2"><div class="sub1"><h4>${cu.label}</h4><div class="eq"><div><small>${cu.unit}</small><b>${cu.a}</b></div><i>=</i><div><small>${cu.unit}</small><b>${cu.b}</b></div></div><p>${cu.text}</p></div>
+        <div class="sub1"><h4>${pl.label}</h4><ul class="plat">${(pl.rows || []).map(r => `<li class="${r[2] ? "ok" : "no"}"><b>${r[0]}</b><span>${r[1]}</span></li>`).join("")}</ul><p class="was">${pl.before || ""}</p></div></div></div>`);
+  },
+  // 진행 중인 이벤트 카드: 기간·보상은 '한정 이벤트' 단원의 같은 key 블록에서 가져온다(값을 두 곳에 쓰지 않게)
+  eventcard: b => {
+    const ev = ((N[L] || {}).chapters || []).flatMap(c => c.blocks || []).find(x => x.type === "event" && x.key === b.key) || {};
+    const rows = ((ev.table || {}).rows || []);
+    return box(b, `<div class="evc"><div class="evc-t"><div><span class="evb">${b.badge || ""} · ${ev.period || ""}</span><b class="evn">${b.title || ev.label || ""}</b><p>${b.text || ""}</p></div>
+      <div class="evw"><small>${(b.where || {}).label || ""}</small><div>${((b.where || {}).items || []).map(x => `<span>${x}</span>`).join("")}</div></div></div>
+      ${rows.length ? `<h4>${b.rewardsLabel || ""}</h4><ol class="evr">${rows.map((r, i) => `<li${i === rows.length - 1 ? ' class="last"' : ""}><b>${r[0]}${b.rewardUnit || ""}</b><span>${r[1]}${r[2] ? " x" + r[2] : ""}</span></li>`).join("")}</ol>` : ""}
+      <a class="evlink" href="#ev-${esc(b.key)}">${b.more || ""} ›</a></div>`);
+  },
   /* 한정 이벤트: 배너 이미지 + 이름·D-N + 기간 + 설명 + (보상 표) + (칩) + 유의 사항 */
   event: b => {
     const img = b.img ? `<div class="ev-img"><img src="${esc(b.img)}" alt="${esc(b.label || "")}" loading="lazy" onerror="this.parentNode.remove()"></div>` : "";
