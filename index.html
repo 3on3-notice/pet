@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>펫 가이드</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FF6A1A'/%3E%3Cg fill='%23fff'%3E%3Cellipse cx='11' cy='11.5' rx='2.4' ry='3'/%3E%3Cellipse cx='21' cy='11.5' rx='2.4' ry='3'/%3E%3Cellipse cx='7.2' cy='17' rx='2.1' ry='2.6'/%3E%3Cellipse cx='24.8' cy='17' rx='2.1' ry='2.6'/%3E%3Cpath d='M16 15.5c-3.6 0-7 4.6-7 7.4 0 2 1.6 2.8 3.3 2.8 1.5 0 2.4-.8 3.7-.8s2.2.8 3.7.8c1.7 0 3.3-.8 3.3-2.8 0-2.8-3.4-7.4-7-7.4z'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* 펫 가이드 화면. 구조·규칙은 화면_설계.md. 내용은 data.js / pets.js / photos.js 에서만 온다. */
+:root{
+  --bg:#F5F6F7;--card:#fff;--line:#E5E8EB;--line2:#F2F4F6;
+  --t1:#191F28;--t2:#4E5968;--t3:#8B95A1;--t4:#B0B8C1;
+  --or:#FF6A1A;--or-d:#E8590C;--or-bg:#FFF5EF;
+  --gnb:48px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--t1);font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Yu Gothic UI",Meiryo,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+html:lang(ko) body{word-break:keep-all}
+html:lang(ja) body{font-family:"Pretendard Variable",Pretendard,"Yu Gothic UI","Yu Gothic",Meiryo,"Hiragino Sans",-apple-system,"Malgun Gothic",sans-serif;line-break:strict}
+ul,ol{list-style:none}
+a{color:inherit}
+button{font:inherit;color:inherit}
+summary{list-style:none;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+:focus-visible{outline:2px solid var(--t1);outline-offset:2px}
+.in{max-width:1180px;margin:0 auto;padding:0 20px}
+.sm{font-size:12.5px;color:var(--t3)}
+
+/* ── 헤더 ── */
+.hd{background:#fff}
+.hd .in{height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;font-size:19px;font-weight:800;letter-spacing:-.4px;text-decoration:none;color:var(--t1)}
+.logo svg{width:26px;height:26px;flex:none}
+.langs{display:flex;align-items:center}
+.langs button{position:relative;border:0;background:none;font-size:13px;color:var(--t3);padding:4px 10px;cursor:pointer}
+.langs button+button::before{content:"";position:absolute;left:0;top:50%;width:1px;height:10px;margin-top:-5px;background:var(--line)}
+.langs button.on{color:var(--t1);font-weight:700}
+
+/* ── 탭 메뉴(GNB) ── */
+.gnb{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--line)}
+.tabs{position:relative;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin:0 -10px}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{position:relative;flex:none;display:flex;align-items:center;height:var(--gnb);padding:0 10px;font-size:15px;font-weight:600;color:var(--t2);text-decoration:none;white-space:nowrap}
+.tabs a:hover{color:var(--t1)}
+.tabs a.on{color:var(--t1)}
+.tabs a.on::after{content:"";position:absolute;left:10px;right:10px;bottom:0;height:2px;background:var(--t1)}
+/* 탭이 넘치면 가장자리에 흐림 표시 */
+.gnb .in{position:relative}
+.gnb .in::before,.gnb .in::after{content:"";position:absolute;top:0;bottom:0;width:32px;z-index:1;pointer-events:none;opacity:0;transition:opacity .15s}
+.gnb .in::before{left:0;background:linear-gradient(90deg,#fff 20%,rgba(255,255,255,0))}
+.gnb .in::after{right:0;background:linear-gradient(270deg,#fff 20%,rgba(255,255,255,0))}
+.gnb.more-l .in::before,.gnb.more-r .in::after{opacity:1}
+
+/* ── 본문 2단 ── */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-areas:"banner side" "main side";gap:20px 24px;align-items:start;padding-top:20px;padding-bottom:56px}
+.banner{grid-area:banner}
+.side{grid-area:side;position:sticky;top:calc(var(--gnb) + 17px)}
+main{grid-area:main;min-width:0}
+
+/* 배너 카드 */
+.banner{position:relative;height:220px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#BDEFE4 url(bg.jpg) center bottom/cover no-repeat}
+.banner::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.78) 0%,rgba(255,255,255,.45) 42%,rgba(255,255,255,0) 68%)}
+.banner .bt{position:relative;z-index:2;padding:28px 32px;max-width:60%}
+.ribbon{display:inline-block;font-size:12.5px;font-weight:700;color:#fff;background:var(--or);border-radius:4px;padding:3px 9px;letter-spacing:.1px}
+.ribbon:empty{display:none}
+.banner h1{font-size:30px;font-weight:800;letter-spacing:-.8px;line-height:1.25;margin:12px 0 8px}
+.banner p{font-size:15px;color:var(--t2);line-height:1.55}
+.banner .art{position:absolute;z-index:1;right:14px;bottom:-2px;height:214px;max-width:46%;object-fit:contain;object-position:right bottom}
+
+/* 확인된 이슈 상자 */
+.box{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.iss-h{display:flex;align-items:center;gap:6px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.iss-h h2{font-size:16px;font-weight:700;letter-spacing:-.2px}
+.iss-h .cnt{font-size:14px;font-weight:700;color:var(--or)}
+.iss details+details{border-top:1px solid var(--line2)}
+.iss summary{position:relative;display:block;padding:14px 40px 14px 18px}
+.iss summary:hover{background:#FAFBFC}
+.iss .ti{display:block;font-size:14px;font-weight:600;line-height:1.45;margin-top:6px}
+.iss .dt{display:block;font-size:12px;color:var(--t3);margin-top:3px}
+.iss summary .chev{position:absolute;right:16px;top:18px}
+.iss .tx{padding:0 18px 16px;font-size:13.5px;color:var(--t2);line-height:1.7}
+.iss-empty{padding:22px 18px;font-size:14px;color:var(--t3)}
+.sb{display:inline-block;font-size:11.5px;font-weight:700;line-height:18px;border-radius:4px;padding:0 6px}
+.sb.checking{background:#FFF6DA;color:#A06A00}
+.sb.planned{background:#FFEFE6;color:var(--or-d)}
+.sb.fixed{background:#E8F3FF;color:#1B64DA}
+.chev{width:16px;height:16px;flex:none;color:var(--t4);transition:transform .2s}
+details[open]>summary .chev{transform:rotate(180deg)}
+
+/* ── 단원 ── */
+.ch{margin-top:40px;scroll-margin-top:calc(var(--gnb) + 14px)}
+.ch:first-child{margin-top:12px}
+.ch-h{padding-bottom:12px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.ch-h h2{font-size:21px;font-weight:800;letter-spacing:-.5px;line-height:1.35}
+.ch-h p{font-size:14.5px;color:var(--t3);margin-top:3px}
+.blk{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin-bottom:12px}
+.blk h3{font-size:16px;font-weight:700;letter-spacing:-.2px;margin-bottom:12px}
+.desc{font-size:14.5px;color:var(--t2);margin-bottom:14px}
+.rt{font-size:15px;color:var(--t2);line-height:1.7}
+.note{margin-top:12px;font-size:13px;color:var(--t3);line-height:1.6;padding-left:15px;text-indent:-15px}
+.cols>.fig{margin-top:16px;max-width:440px}
+@media (min-width:1100px){
+  .wp .cols{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:22px;align-items:start}
+  .wp .cols>.fig{margin-top:0;max-width:none}
+}
+
+/* 사진 칸 */
+.ph{position:relative;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:var(--line2);border:1px solid var(--line)}
+.ph img{display:block;width:100%;height:100%;object-fit:contain}
+.ph.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:8px;text-align:center;font-size:12.5px;color:var(--t3);line-height:1.4}
+.ph.empty svg{width:24px;height:24px;color:var(--t4);margin-bottom:2px}
+.ph.empty .sm{font-size:11.5px;color:var(--t4)}
+.ph .mk{position:absolute;left:8px;top:8px;font-size:11px;font-weight:700;color:#fff;background:rgba(25,31,40,.72);border-radius:4px;padding:1px 6px}
+.fig figcaption{font-size:12.5px;color:var(--t3);margin-top:6px}
+
+/* 찾아가는 순서 */
+.steps{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:34px}
+.steps li{position:relative;display:flex;flex-direction:column}
+.steps li:not(:last-child)::after{content:"";position:absolute;right:-22px;top:7px;width:8px;height:8px;border-top:2px solid var(--t4);border-right:2px solid var(--t4);transform:rotate(45deg)}
+.st-h{display:flex;align-items:center;gap:8px}
+.num{flex:none;width:22px;height:22px;border-radius:50%;background:var(--or);color:#fff;font-size:12.5px;font-weight:700;display:grid;place-items:center}
+.st-h b{font-size:15.5px;font-weight:700}
+.steps p{flex:1;font-size:14px;color:var(--t2);line-height:1.55;margin:6px 0 10px}
+.before{margin-top:14px;font-size:13px;color:var(--t3)}
+.before s{color:var(--t3)}
+
+/* 메뉴 구성 */
+.menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.mi{display:block;height:100%;border:1px solid var(--line);border-radius:8px;padding:13px 16px;text-decoration:none;position:relative}
+a.mi{padding-right:36px}
+a.mi:hover{background:#FAFBFC;border-color:#D1D6DB}
+a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px;margin-top:-4px;border-top:1.5px solid var(--t3);border-right:1.5px solid var(--t3);transform:rotate(45deg)}
+.mi b{font-size:15px;font-weight:700}
+.mi .en{margin-left:6px;font-size:11px;font-weight:600;letter-spacing:.5px;color:var(--t3)}
+.mi p{font-size:13.5px;color:var(--t2);margin-top:2px;line-height:1.5}
+
+/* 주의 */
+.alert{display:flex;gap:10px;align-items:flex-start;background:var(--or-bg);border:1px solid #FFDDC9;border-radius:10px;padding:14px 18px;margin-bottom:12px;font-size:14.5px;line-height:1.6}
+.alert .ic{flex:none;width:18px;height:18px;border-radius:50%;background:var(--or);color:#fff;font-size:12px;font-weight:800;line-height:1;display:grid;place-items:center;margin-top:2px}
+.alert b{color:var(--or-d)}
+.alert .fig{margin-top:10px;max-width:440px}
+
+/* 표 */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.t{width:100%;min-width:400px;border-collapse:collapse;font-size:14px;border-top:1px solid var(--t1)}
+.t th,.t td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:center;vertical-align:middle}
+.t thead th{background:#F9FAFB;color:var(--t2);font-weight:600;font-size:13px}
+.t tbody th{text-align:left;font-weight:600;white-space:nowrap}
+.t td{color:var(--t2)}
+.gdot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--g,var(--t4));margin-right:6px;vertical-align:1px}
+
+/* 작은 칸(정의 목록) */
+.facts>div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:14px;padding:12px 0;border-top:1px solid var(--line2)}
+.facts>div:first-child{border-top:0;padding-top:2px}
+.facts>div:last-child{padding-bottom:0}
+.facts dt{font-size:14px;font-weight:600;color:var(--t3)}
+.facts dd{font-size:14.5px}
+
+/* 확률 막대 */
+.bars{display:flex;flex-direction:column;gap:11px}
+.bars li{display:grid;grid-template-columns:84px minmax(0,1fr) 42px minmax(0,150px);gap:10px;align-items:center;font-size:14px}
+.bars .nm{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bars .tr{height:10px;border-radius:5px;background:var(--line2);overflow:hidden}
+.bars .tr i{display:block;height:100%;border-radius:5px;background:var(--g)}
+.bars .pc{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.bars .nt{font-size:13px;color:var(--t3);line-height:1.4}
+
+/* 바뀌기 전 → 후 */
+.swap{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.sg{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.sg h4{font-size:13.5px;font-weight:700;padding:9px 14px;background:#F9FAFB;border-bottom:1px solid var(--line)}
+.sg li{display:grid;grid-template-columns:minmax(0,1fr) 14px minmax(0,1fr);gap:8px;align-items:center;padding:10px 14px;font-size:14px;line-height:1.45}
+.sg li+li{border-top:1px solid var(--line2)}
+.sg s{color:var(--t3)}
+.sg .ar{color:var(--t4);text-align:center}
+.sg b{font-weight:600}
+
+/* 기존 → 변경 비교표 (첫 화면 핵심) */
+.cmp{border-top:1px solid var(--t1);font-size:14.5px}
+.cmp-h,.cmp-r{display:grid;grid-template-columns:150px minmax(0,1fr) minmax(0,1.2fr);border-bottom:1px solid var(--line)}
+.cmp-h>span{padding:10px 14px;background:#F9FAFB;font-size:13px;font-weight:600;color:var(--t2)}
+.cmp-h>span:last-child{color:var(--or-d)}
+.cmp-r>*{padding:13px 14px;line-height:1.55}
+.cmp-r .k{font-weight:700;color:var(--t1)}
+.cmp-r .old{color:var(--t3)}
+.cmp-r .old.none{color:var(--t4)}
+.cmp-r .new{position:relative;padding-left:36px;font-weight:600;color:var(--t1);background:#FFFBF8}
+.cmp-r .new .arr{position:absolute;left:13px;top:15px;width:15px;height:15px;color:var(--or)}
+.cmp .tag{display:none}
+.cmp-r b{font-weight:800}
+/* 좋아진 행: 항목 옆 배지 + 변경 칸 강조 (data 의 행 4번째 값 "up") */
+.cmp-r .better{display:inline-block;margin-left:6px;vertical-align:1px;font-style:normal;font-size:11px;font-weight:700;line-height:18px;padding:0 6px;border-radius:4px;background:var(--or);color:#fff;white-space:nowrap}
+.cmp-r.up .new{background:#FFF3EB;color:var(--or-d)}
+/* 접는 상자(기한) */
+.fold>summary{display:flex;align-items:center;gap:8px}
+.fold>summary h3{margin:0}
+.fold>summary .chev{margin-left:auto}
+.fold-bd{padding-top:14px}
+.dd-badge{font-size:12px;font-weight:700;line-height:20px;border-radius:4px;padding:0 7px;background:var(--or);color:#fff}
+.dd-badge.end{background:var(--line2);color:var(--t3)}
+.dd-badge:empty{display:none}
+.dl-v{font-size:20px;font-weight:800;letter-spacing:-.3px;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips li{font-size:13px;color:var(--t2);background:var(--line2);border-radius:999px;padding:5px 12px}
+.chips em{font-style:normal;font-weight:700;color:var(--t1)}
+
+/* 자주 묻는 질문 */
+.faq{padding-top:6px;padding-bottom:6px}
+.faq details+details{border-top:1px solid var(--line2)}
+.faq summary{display:flex;align-items:flex-start;gap:10px;padding:14px 0;font-size:15px;font-weight:600}
+.faq summary .chev{margin:3px 0 0 auto}
+.faq .q{color:var(--or);font-weight:800}
+.faq .a{display:flex;gap:10px;padding:0 26px 16px 0;font-size:14.5px;color:var(--t2)}
+.faq .a i{font-style:normal;font-weight:800;color:var(--t4)}
+
+/* ── 펫 도감 ── */
+.dx-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.srch{position:relative;flex:1 1 260px;max-width:380px}
+.srch input{width:100%;height:42px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:0 38px 0 40px;font:inherit;font-size:14.5px;color:var(--t1);outline:none;-webkit-appearance:none;appearance:none}
+.srch input::placeholder{color:var(--t3)}
+.srch input:focus{border-color:var(--t1)}
+.srch input::-webkit-search-cancel-button{display:none}
+.srch>svg{position:absolute;left:13px;top:50%;width:18px;height:18px;margin-top:-9px;color:var(--t3);pointer-events:none}
+.clr{position:absolute;right:9px;top:50%;width:22px;height:22px;margin-top:-11px;border:0;border-radius:50%;background:var(--t4);color:#fff;cursor:pointer;display:none;place-items:center}
+.clr svg{width:12px;height:12px}
+.srch.has .clr{display:grid}
+.dx-n{margin-left:auto;font-size:13.5px;color:var(--t3)}
+.dx-n strong{color:var(--t1)}
+.gch{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.gch button{display:flex;align-items:center;gap:5px;height:34px;padding:0 13px;border:1px solid var(--line);border-radius:17px;background:#fff;font-size:13.5px;font-weight:600;color:var(--t2);cursor:pointer}
+.gch button:hover{border-color:#D1D6DB}
+.gch button .gdot{margin:0}
+.gch button em{font-style:normal;font-weight:500;color:var(--t3)}
+.gch button.on{background:var(--t1);border-color:var(--t1);color:#fff}
+.gch button.on em{color:rgba(255,255,255,.7)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:16px 10px}
+.pet{display:flex;flex-direction:column;align-items:stretch;text-align:left;border:0;background:none;padding:0;cursor:pointer;min-width:0}
+.pet .ic{position:relative;aspect-ratio:1/1;border-radius:10px;background:var(--line2);border:1px solid transparent;display:grid;place-items:center;overflow:hidden;transition:border-color .15s,background .15s}
+.pet:hover .ic{border-color:var(--g);background:#EEF0F3}
+.pet:focus-visible{outline:0}
+.pet:focus-visible .ic{outline:2px solid var(--t1);outline-offset:2px}
+.pet .ic img{width:84%;height:84%;object-fit:contain}
+.gt{position:absolute;left:6px;top:6px;display:flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;line-height:17px;color:var(--gd);background:rgba(255,255,255,.92);border-radius:4px;padding:0 5px}
+.gt i{width:6px;height:6px;border-radius:50%;background:var(--g)}
+.pet b{font-size:13.5px;font-weight:600;line-height:1.35;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pet small{font-size:12px;color:var(--t3);line-height:1.4;margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lt{width:56%;aspect-ratio:1/1;border-radius:24%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:24px;line-height:1;background:linear-gradient(150deg,var(--gl),var(--g))}
+.dx-empty{padding:40px 0;text-align:center;font-size:14px;color:var(--t3)}
+
+/* 바닥글 */
+.foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:13.5px;color:var(--t3);line-height:1.7}
+.foot .upd{font-size:12.5px;color:var(--t4);margin-top:4px}
+
+/* ── 펫 상세 팝업 ── */
+.lock,.lock body{overflow:hidden}
+.ov{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.48);animation:fade .18s ease}
+.ov[hidden]{display:none}
+.dlg{position:relative;width:min(560px,100%);max-height:min(88vh,860px);display:flex;flex-direction:column;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18);outline:none;animation:pop .2s ease}
+@keyframes fade{from{opacity:0}}
+@keyframes pop{from{opacity:0;transform:scale(.97)}}
+@keyframes up{from{transform:translateY(40%)}}
+.grab{display:none}
+.x{position:absolute;right:12px;top:12px;z-index:2;width:36px;height:36px;border:0;border-radius:50%;background:none;cursor:pointer;display:grid;place-items:center;color:var(--t2)}
+.x:hover{background:var(--line2)}
+.x svg{width:20px;height:20px}
+.dlg-bd{overflow-y:auto;overscroll-behavior:contain;padding:28px 28px 22px}
+.pv-top{display:flex;align-items:center;gap:18px;padding-right:30px}
+.pv-ic{flex:none;width:96px;height:96px;border-radius:14px;background:var(--line2);display:grid;place-items:center;overflow:hidden}
+.pv-ic img{width:86%;height:86%;object-fit:contain}
+.pv-ic .lt{font-size:36px;width:62%}
+.gbadge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;line-height:20px;color:var(--gd);background:var(--gb);border-radius:4px;padding:0 8px}
+.gbadge i{width:6px;height:6px;border-radius:50%;background:var(--g)}
+.pv-top h2{font-size:22px;font-weight:800;letter-spacing:-.5px;line-height:1.3;margin-top:6px}
+.pv-top .alt{font-size:13px;color:var(--t3);margin-top:2px}
+.pv-sec{margin-top:24px}
+.pv-sec>h3{font-size:14px;font-weight:700;margin-bottom:8px}
+.abox{border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.abox>b{font-size:16px;font-weight:700}
+.lvv{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-top:12px;font-size:12.5px;color:var(--t3)}
+.lvv strong{display:block;font-size:19px;font-weight:800;color:var(--t1);letter-spacing:-.3px;font-variant-numeric:tabular-nums}
+.lvv .r{text-align:right}
+.lvv .r strong{color:var(--gd)}
+.lvv .ar{color:var(--t4);font-size:16px;padding-bottom:3px}
+.lvb{position:relative;height:8px;border-radius:4px;margin-top:10px;background:linear-gradient(90deg,var(--gb),var(--g))}
+.lvb em{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#fff;border:2px solid var(--g)}
+.info{width:100%;border-collapse:collapse;font-size:14px;border-top:1px solid var(--t1)}
+.info th,.info td{padding:11px 0;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.info th{width:112px;font-weight:600;color:var(--t3);padding-right:12px}
+.info td .gdot{background:var(--g)}
+.info .how{line-height:1.6}
+.info .how li{position:relative;padding-left:11px}
+.info .how li+li{margin-top:3px}
+.info .how li::before{content:"";position:absolute;left:0;top:10px;width:3px;height:3px;border-radius:50%;background:var(--t3)}
+.info b{font-weight:700}
+.pv-subs{margin-top:16px;border:1px solid var(--line);border-radius:10px}
+.pv-subs>summary{display:flex;align-items:center;gap:6px;padding:13px 16px;font-size:14px;font-weight:600}
+.pv-subs>summary b{color:var(--or-d)}
+.pv-subs>summary .chev{margin-left:auto}
+.pv-subs .chips{padding:0 16px 14px}
+.dlg-ft{flex:none;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 16px;border-top:1px solid var(--line);background:#fff}
+.nv{display:flex;align-items:center;gap:2px;height:38px;padding:0 14px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:14px;font-weight:600;cursor:pointer}
+.nv svg{width:16px;height:16px}
+.nv:hover:not(:disabled){background:#FAFBFC}
+.nv:disabled{color:var(--t4);cursor:default}
+.pos{font-size:13px;color:var(--t3);font-variant-numeric:tabular-nums}
+
+/* 캡처용(?shot): 움직임 없음 */
+.shot{scroll-behavior:auto}
+.shot *,.shot *::before,.shot *::after{animation:none!important;transition:none!important}
+
+/* ── 중간 폭 ── */
+@media (max-width:1023px){.layout{grid-template-columns:minmax(0,1fr) 260px}}
+
+/* ── 모바일 ── */
+@media (max-width:759px){
+  .in{padding:0 16px}
+  .hd .in{height:52px}
+  .logo{font-size:17px}.logo svg{width:24px;height:24px}
+  .tabs{margin:0 -16px;padding:0 6px}
+  .tabs a{font-size:14.5px}
+  .layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"banner" "side" "main";gap:12px;padding-top:12px;padding-bottom:40px}
+  .side{position:static}
+  .banner{height:auto;min-height:0}
+  .banner::before{background:linear-gradient(180deg,rgba(255,255,255,.7) 0%,rgba(255,255,255,.3) 55%,rgba(255,255,255,0) 75%)}
+  .banner .bt{max-width:none;padding:20px 20px 138px}
+  .banner h1{font-size:23px;margin:10px 0 6px}
+  .banner p{font-size:14px}
+  .banner .art{height:132px;max-width:72%;right:8px;bottom:-2px}
+  .ch{margin-top:32px}
+  .ch:first-child{margin-top:20px}
+  .ch-h h2{font-size:19px}
+  .ch-h p{font-size:14px}
+  .blk{padding:18px 16px}
+  .steps{grid-template-columns:minmax(0,1fr);gap:28px}
+  .steps li:not(:last-child)::after{right:auto;top:auto;left:50%;bottom:-19px;margin-left:-4px;transform:rotate(135deg)}
+  .cmp{border-top:0}
+  .cmp-h{display:none}
+  .cmp-r{display:block;border:1px solid var(--line);border-radius:8px;margin-top:8px;overflow:hidden}
+  .cmp-r:first-of-type{margin-top:0}
+  .cmp-r .k{display:block;padding:11px 14px;background:#F9FAFB;border-bottom:1px solid var(--line);font-size:14.5px}
+  .cmp-r .old,.cmp-r .new{display:flex;gap:10px;align-items:baseline;padding:10px 14px}
+  .cmp-r .new{padding-left:14px;border-top:1px dashed var(--line)}
+  .cmp-r .new .arr{display:none}
+  .cmp .tag{display:inline-block;flex:none;min-width:34px;font-style:normal;font-size:11.5px;font-weight:700;line-height:18px;text-align:center;border-radius:4px;padding:0 5px;background:var(--line2);color:var(--t3)}
+  .cmp .new .tag{background:#FFEFE6;color:var(--or-d)}
+  .menu{grid-template-columns:minmax(0,1fr)}
+  .facts>div{grid-template-columns:84px minmax(0,1fr);gap:10px}
+  .bars li{grid-template-columns:72px minmax(0,1fr) 40px;gap:4px 8px}
+  .bars .nt{grid-column:2/-1;margin-top:-2px}
+  .bars .nt:empty{display:none}
+  .swap{grid-template-columns:minmax(0,1fr)}
+  .dx-bar{gap:8px}
+  .srch{flex-basis:100%;max-width:none}
+  .dx-n{margin-left:0}
+  .gch{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px 16px;padding:0 16px}
+  .gch::-webkit-scrollbar{display:none}
+  .gch button{flex:none}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 8px}
+  .pet b{font-size:13px}
+  .pet small{font-size:11.5px}
+  .lt{font-size:20px}
+  /* 팝업 → 아래에서 올라오는 시트 */
+  .ov{align-items:flex-end;padding:0}
+  .dlg{width:100%;max-height:88vh;border-radius:16px 16px 0 0;animation:up .24s cubic-bezier(.2,.8,.2,1)}
+  .grab{display:flex;justify-content:center;flex:none;padding:10px 0 6px;touch-action:none;cursor:grab}
+  .grab i{width:40px;height:4px;border-radius:2px;background:#D1D6DB}
+  .x{top:8px;right:8px}
+  .dlg-bd{padding:10px 20px 18px}
+  .pv-top{gap:14px}
+  .pv-ic{width:80px;height:80px;border-radius:12px}
+  .pv-ic .lt{font-size:30px}
+  .pv-top h2{font-size:20px}
+  .info th{width:96px}
+  .dlg-ft{padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+}
+</style>
+</head>
+<body>
+<header class="hd">
+  <div class="in">
+    <a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#FF6A1A"/><g fill="#fff"><ellipse cx="11" cy="11.5" rx="2.4" ry="3"/><ellipse cx="21" cy="11.5" rx="2.4" ry="3"/><ellipse cx="7.2" cy="17" rx="2.1" ry="2.6"/><ellipse cx="24.8" cy="17" rx="2.1" ry="2.6"/><path d="M16 15.5c-3.6 0-7 4.6-7 7.4 0 2 1.6 2.8 3.3 2.8 1.5 0 2.4-.8 3.7-.8s2.2.8 3.7.8c1.7 0 3.3-.8 3.3-2.8 0-2.8-3.4-7.4-7-7.4z"/></g></svg><span id="site"></span></a>
+    <div class="langs" id="langs"></div>
+  </div>
+</header>
+<nav class="gnb" id="gnb"><div class="in"><div class="tabs" id="tabs"></div></div></nav>
+<div class="in layout">
+  <section class="banner" id="top">
+    <div class="bt"><span class="ribbon" id="ribbon"></span><h1 id="title"></h1><p id="lead"></p></div>
+    <img class="art" src="pet_art.png" alt="">
+  </section>
+  <aside class="side" id="side"></aside>
+  <main id="main"></main>
+</div>
+
+<div class="ov" id="ov" hidden>
+  <div class="dlg" id="dlg" role="dialog" aria-modal="true" aria-labelledby="dlgT" tabindex="-1">
+    <div class="grab" id="grab" aria-hidden="true"><i></i></div>
+    <button type="button" class="x" id="dlgX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="dlg-bd" id="dlgB"></div>
+    <div class="dlg-ft">
+      <button type="button" class="nv" id="dlgP"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg><span></span></button>
+      <span class="pos" id="dlgN"></span>
+      <button type="button" class="nv" id="dlgNx"><span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="pets.js"></script>
+<script src="photos.js"></script>
+<script>
+(function () {
+"use strict";
+const N = window.NOTICE || {};
+const PETS = Array.isArray(window.PETS) ? window.PETS : [];
+const PHOTOS = window.PHOTOS || {};
+const ICONS = window.PET_ICONS || {};
+const SUBS = Array.isArray(window.SUBS) ? window.SUBS : [];
+const qs = new URLSearchParams(location.search);
+const SHOT = qs.has("shot");
+if (SHOT) document.documentElement.classList.add("shot");
+
+const LANGS = ["kr", "en", "jp"].filter(l => N[l]);
+const HTML_LANG = { kr: "ko", en: "en", jp: "ja" };
+const LANG_NAME = { kr: "KR", en: "EN", jp: "JP" };
+
+/* 등급별 언어 무관 값(만렙·먹이 경험치) — 펫 시스템 가이드(10/26) 기준. 색은 화면 규칙. */
+const GD = {
+  P: { c: "#8E7CF0", d: "#6A55DC", l: "#C9C0F8", b: "#F1EEFD", max: 15, feed: 200 },
+  G: { c: "#E0A400", d: "#9C7000", l: "#F4D77A", b: "#FDF5DC", max: 12, feed: 50 },
+  S: { c: "#8FA3B8", d: "#5A6D82", l: "#CDD7E1", b: "#EEF2F6", max: 6, feed: 20 },
+  B: { c: "#C9875A", d: "#94592F", l: "#E8C4A9", b: "#F9EFE7", max: 3, feed: 10 }
+};
+const ORDER = ["P", "G", "S", "B"];
+
+/* 화면 고정 문구의 정본은 data.js 의 NOTICE[L].ui. 없거나 키가 빠지면 아래 KR 값으로 대체한다. */
+const UI_KR = {
+  search: "펫 이름 또는 능력으로 찾기", all: "전체", unit: "종",
+  grade: { P: "플래티넘", G: "골드", S: "실버", B: "브론즈" },
+  unique: "고유 능력", maxLv: "만렙", sub: "서브 능력 칸", subUp: "서브 강화", feedExp: "먹이 경험치", how: "얻는 방법",
+  subsCan: "이 등급에 붙을 수 있는 서브 능력", prev: "이전", next: "다음", close: "닫기", none: "없음",
+  photo: "사진 준비 중", issues: "확인된 이슈",
+  gradeInfo: {
+    P: { sub: "3칸 · Lv.3 · 6 · 9 해금", up: "Lv.12 · 15", how: "입양 불가 · <b>골드 펫 조합</b> 성공(25%)으로만 얻을 수 있습니다." },
+    G: { sub: "2칸 · Lv.3 · 6 해금", up: "Lv.9", how: "<b>입양</b> 5%(골드 15종) 또는 <b>실버 펫 조합</b> 성공(40%)" },
+    S: { sub: "1칸 · Lv.3 해금", up: "", how: "<b>입양</b> 25%(실버 4종) 또는 <b>브론즈 펫 조합</b> 성공(60%)" },
+    B: { sub: "", up: "", how: "<b>입양</b> 70%(브론즈 6종)" }
+  },
+  /* ui 형식 밖의 보조 문구 — ui 에 같은 키가 있으면 그 값을 쓴다 */
+  clear: "검색어 지우기", noResult: "찾는 펫이 없습니다. 다른 이름이나 능력으로 찾아보세요.", info: "펫 정보",
+  gradeL: "등급", feedNote: "이 펫을 먹이로 줄 때", mock: "임시 사진", dialog: "펫 상세 정보", tabs: "단원 메뉴"
+};
+/* 보조 문구만 언어별 기본값을 둔다(ui 형식 키는 KR 로만 대체) */
+const UI_EXTRA = {
+  en: { clear: "Clear search", noResult: "No pets found. Try another name or ability.", info: "Pet info", gradeL: "Grade", feedNote: "when used as feed", mock: "Temporary image", dialog: "Pet details", tabs: "Sections" },
+  jp: { clear: "検索語を消す", noResult: "該当するペットがありません。", info: "ペット情報", gradeL: "等級", feedNote: "餌として与えたとき", mock: "仮画像", dialog: "ペット詳細", tabs: "目次" }
+};
+const GRADE_ALIAS = { P: ["Platinum", "プラチナ"], G: ["Gold", "ゴールド"], S: ["Silver", "シルバー"], B: ["Bronze", "ブロンズ"] };
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const tx = o => o == null ? "" : (typeof o === "object" ? (o[L] || o.en || o.kr || "") : String(o));
+const norm = s => String(s || "").toLowerCase().replace(/\s+/g, "");
+const SVG = {
+  chev: '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
+  cam: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.6-2.4h6.8L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.4"/></svg>',
+  search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>',
+  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>'
+};
+
+function pickLang() {
+  const q = qs.get("lang"); if (q && N[q]) return q;
+  const n = (navigator.language || "").toLowerCase();
+  const g = n.startsWith("ko") ? "kr" : n.startsWith("ja") ? "jp" : "en";
+  return N[g] ? g : (LANGS[0] || "kr");
+}
+let L = pickLang();
+/* 화면 문구: NOTICE[L].ui → (보조 문구만) 언어별 기본값 → KR 값 순으로 채운다 */
+let UCACHE = null, UCACHE_L = null;
+function U() {
+  if (UCACHE && UCACHE_L === L) return UCACHE;
+  const src = (N[L] && N[L].ui) || {};
+  const u = Object.assign({}, UI_KR, UI_EXTRA[L] || {}, src);
+  u.grade = Object.assign({}, UI_KR.grade, src.grade || {});
+  u.gradeInfo = {};
+  ORDER.forEach(k => { u.gradeInfo[k] = Object.assign({}, UI_KR.gradeInfo[k], (src.gradeInfo || {})[k] || {}); });
+  UCACHE = u; UCACHE_L = L; return u;
+}
+/* 이름·능력: 현재 언어 → en → kr */
+const petName = p => p[L] || p.en || p.kr || "";
+const abil = p => p.ability ? (p.ability[L] || p.ability.en || p.ability.kr || "") : "";
+/* 표·막대의 첫 칸이 등급 이름이면 등급색 점을 붙인다(세 언어 이름 모두 인식) */
+const GRADE_NAMES = {};
+ORDER.forEach(k => {
+  const names = [UI_KR.grade[k]].concat(GRADE_ALIAS[k]);
+  ["kr", "en", "jp"].forEach(l => { const g = N[l] && N[l].ui && N[l].ui.grade; if (g && g[k]) names.push(g[k]); });
+  names.forEach(n => { GRADE_NAMES[String(n).trim().toLowerCase()] = k; });
+});
+const gradeOf = name => GRADE_NAMES[String(name == null ? "" : name).replace(/<[^>]*>/g, "").trim().toLowerCase()] || null;
+const gVars = k => { const g = GD[k] || GD.B; return `--g:${g.c};--gd:${g.d};--gl:${g.l};--gb:${g.b}`; };
+
+/* ── 사진 칸: src 없음·로드 실패 → 회색 자리 + label ── */
+function phEmpty(label) {
+  return `<div class="ph empty">${SVG.cam}<span>${esc(label)}</span><span class="sm">${esc(U().photo)}</span></div>`;
+}
+function photoHTML(key) {
+  const ph = PHOTOS[key] || {};
+  const label = tx(ph.label) || key;
+  const cap = tx(ph.cap);
+  const inner = ph.src
+    ? `<div class="ph"><img src="${esc(ph.src)}" alt="${esc(label)}" data-label="${esc(label)}" onerror="__phFail(this)">${ph.mock ? `<span class="mk">${esc(U().mock)}</span>` : ""}</div>`
+    : phEmpty(label);
+  return `<figure class="fig">${inner}${cap ? `<figcaption>${cap}</figcaption>` : ""}</figure>`;
+}
+window.__phFail = img => { const box = img.parentNode; if (box) box.outerHTML = phEmpty(img.dataset.label || ""); };
+
+/* ── 펫 아이콘: 없음·로드 실패 → 이름 첫 글자를 등급색 사각형에 ── */
+function letterOf(p) { return Array.from(String(petName(p)).trim())[0] || "?"; }
+function iconHTML(p) {
+  const src = ICONS[p.kr];
+  return src
+    ? `<img src="${esc(src)}" alt="" data-l="${esc(letterOf(p))}" onerror="__icFail(this)">`
+    : `<span class="lt" aria-hidden="true">${esc(letterOf(p))}</span>`;
+}
+window.__icFail = img => {
+  const s = document.createElement("span"); s.className = "lt"; s.setAttribute("aria-hidden", "true");
+  s.textContent = img.dataset.l || "?"; img.replaceWith(s);
+};
+
+/* ── 블록 ── */
+const noteHTML = n => n ? `<p class="note">※ ${n}</p>` : "";
+const descHTML = t => t ? `<p class="desc">${t}</p>` : "";
+function box(b, inner, cls) {
+  const head = b.label ? `<h3>${b.label}</h3>` : "";
+  if (b.photo) return `<div class="blk wp ${cls || ""}">${head}<div class="cols"><div class="cm">${inner}</div>${photoHTML(b.photo)}</div></div>`;
+  return `<div class="blk ${cls || ""}">${head}${inner}</div>`;
+}
+function beforeHTML(s) {
+  const m = String(s).match(/^([^:：]+[:：])\s*(.*)$/);
+  return `<p class="before">${m ? `${m[1]} <s>${m[2]}</s>` : `<s>${s}</s>`}</p>`;
+}
+const R = {
+  text: b => box(b, `<div class="rt">${b.text || ""}</div>`),
+  steps: b => {
+    const it = b.items || [];
+    return `<div class="blk">${b.label ? `<h3>${b.label}</h3>` : ""}<ol class="steps" style="--n:${Math.max(1, it.length)}">${it.map((s, i) =>
+      `<li><div class="st-h"><span class="num">${i + 1}</span><b>${s[0] || ""}</b></div><p>${s[1] || ""}</p>${s[2] ? photoHTML(s[2]) : ""}</li>`).join("")}</ol>${b.before ? beforeHTML(b.before) : ""}${noteHTML(b.note)}</div>`;
+  },
+  compare: b => {
+    const h = b.head || [], u = U();
+    const hk = h[0] || "", ho = h[1] || "", hn = h[2] || "";
+    const isNone = v => v == null || /^\s*[–—-]?\s*$/.test(String(v));
+    const arr = '<svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';
+    return box(b, `${descHTML(b.text)}<div class="cmp" role="table">${h.length ? `<div class="cmp-h" role="row"><span role="columnheader">${hk}</span><span role="columnheader">${ho}</span><span role="columnheader">${hn}</span></div>` : ""}${(b.rows || []).map(r =>
+      `<div class="cmp-r${r[3] === "up" ? " up" : ""}" role="row"><span class="k" role="rowheader">${r[0] || ""}${r[3] === "up" ? `<em class="better">${u.better || { kr: "좋아진 점", en: "Improved", jp: "改善" }[L] || "Improved"}</em>` : ""}</span><span class="old${isNone(r[1]) ? " none" : ""}" role="cell"><em class="tag">${ho}</em><span>${isNone(r[1]) ? u.none : r[1]}</span></span><span class="new" role="cell">${arr}<em class="tag">${hn}</em><span>${isNone(r[2]) ? u.none : r[2]}</span></span></div>`).join("")}</div>${noteHTML(b.note)}`);
+  },
+  menu: b => box(b, `<ul class="menu">${(b.items || []).map(m => {
+    const inner = `<b>${m[0] || ""}</b>${m[1] ? `<span class="en">${m[1]}</span>` : ""}${m[2] ? `<p>${m[2]}</p>` : ""}`;
+    return `<li>${m[3] ? `<a class="mi" href="#${esc(m[3])}">${inner}</a>` : `<div class="mi">${inner}</div>`}</li>`;
+  }).join("")}</ul>${noteHTML(b.note)}`),
+  img: b => {
+    const head = b.label ? `<h3>${b.label}</h3>` : "";
+    const fig = b.photo ? photoHTML(b.photo)
+      : b.src ? `<figure class="fig"><div class="ph"><img src="${esc(b.src)}" alt="${esc(b.cap || "")}" data-label="${esc(b.cap || "")}" onerror="__phFail(this)"></div>${b.cap ? `<figcaption>${b.cap}</figcaption>` : ""}</figure>`
+      : `<figure class="fig">${phEmpty(b.cap || b.label || "")}</figure>`;
+    return `<div class="blk">${head}${fig}${noteHTML(b.note)}</div>`;
+  },
+  alert: b => `<div class="alert"><span class="ic" aria-hidden="true">!</span><div>${b.text || ""}${b.photo ? photoHTML(b.photo) : ""}</div></div>`,
+  table: b => box(b, `${descHTML(b.text)}<div class="tw"><table class="t"><thead><tr>${(b.head || []).map(h => `<th scope="col">${h}</th>`).join("")}</tr></thead><tbody>${(b.rows || []).map(r =>
+    `<tr>${r.map((c, j) => { if (j) return `<td>${c}</td>`; const k = gradeOf(c); return `<th scope="row">${k ? `<i class="gdot" style="${gVars(k)}"></i>` : ""}${c}</th>`; }).join("")}</tr>`).join("")}</tbody></table></div>${noteHTML(b.note)}`),
+  facts: b => box(b, `${descHTML(b.text)}<dl class="facts">${(b.items || []).map(f => `<div><dt>${f[0] || ""}</dt><dd>${f[1] || ""}</dd></div>`).join("")}</dl>${noteHTML(b.note)}`),
+  bars: b => box(b, `${descHTML(b.text)}<ul class="bars">${(b.items || []).map(x => {
+    const k = gradeOf(x[0]), v = Math.max(0, Math.min(100, parseFloat(x[1]) || 0));
+    const pc = typeof x[1] === "number" ? x[1] + "%" : (x[1] || "");
+    return `<li style="${k ? gVars(k) : "--g:var(--or)"}"><span class="nm"><i class="gdot"></i>${x[0] || ""}</span><span class="tr"><i style="width:${v}%"></i></span><span class="pc">${pc}</span><span class="nt">${x[2] || ""}</span></li>`;
+  }).join("")}</ul>${noteHTML(b.note)}`),
+  swap: b => box(b, `${descHTML(b.text)}<div class="swap">${(b.groups || []).map(g => {
+    const k = gradeOf(g.g);
+    return `<div class="sg" style="${k ? gVars(k) : ""}"><h4><i class="gdot"></i>${g.g || ""}</h4><ul>${(g.rows || []).map(r => `<li><s>${r[0] || ""}</s><span class="ar">→</span><b>${r[1] || ""}</b></li>`).join("")}</ul></div>`;
+  }).join("")}</div>${noteHTML(b.note)}`),
+  deadline: b => `<div class="blk"><details class="fold"${!b.fold || SHOT ? " open" : ""}><summary><h3>${b.label || ""}</h3><span class="dd-badge" data-dl="${esc(b.deadline || "")}"></span>${SVG.chev}</summary><div class="fold-bd">${descHTML(b.text)}${b.v ? `<div class="dl-v">${b.v}</div>` : ""}${(b.items || []).length ? `<ul class="chips">${b.items.map(x => `<li>${x}</li>`).join("")}</ul>` : ""}${noteHTML(b.note)}</div></details></div>`,
+  faq: b => `<div class="blk faq">${b.label ? `<h3>${b.label}</h3>` : ""}${(b.items || []).map(f =>
+    `<details${SHOT ? " open" : ""}><summary><span class="q">Q</span><span>${f[0] || ""}</span>${SVG.chev}</summary><div class="a"><i>A</i><div>${f[1] || ""}</div></div></details>`).join("")}</div>`,
+  dex: b => `<div class="blk dexb">${b.label ? `<h3>${b.label}</h3>` : ""}<div class="dx-bar"><label class="srch" id="dxs">${SVG.search}<input type="search" id="dxq" autocomplete="off" spellcheck="false" enterkeyhint="search"><button type="button" class="clr" id="dxc">${SVG.x}</button></label><span class="dx-n" id="dxn" aria-live="polite"></span></div><div class="gch" id="dxg"></div><div class="grid" id="dxgrid"></div><p class="dx-empty" id="dxe" hidden></p></div>`
+};
+function block(b, t) {
+  try { const f = b && R[b.type]; return f ? f(b, t) : ""; }
+  catch (err) { console.warn("block skipped:", b && b.type, err); return ""; }
+}
+
+/* ── 확인된 이슈 ── */
+function issuesHTML(t) {
+  const is = Array.isArray(t.issues) ? t.issues : [], st = t.st || {}, dl = t.dl || {};
+  return `<div class="box iss"><div class="iss-h"><h2>${t.issuesLabel || U().issues}</h2>${is.length ? `<span class="cnt">${is.length}</span>` : ""}</div>${is.length
+    ? is.map((x, i) => `<details${i === 0 || SHOT ? " open" : ""}><summary><span class="sb ${esc(x.status)}">${st[x.status] || x.status || ""}</span><span class="ti">${x.title || ""}</span><span class="dt">${x.status === "fixed" ? (dl.fixed || "") : (dl.found || "")} ${x.date || ""}</span>${SVG.chev}</summary><div class="tx">${x.text || ""}</div></details>`).join("")
+    : `<p class="iss-empty">${t.issuesEmpty || ""}</p>`}</div>`;
+}
+
+/* ── 펫 도감 ── */
+let Q = "", GF = "all", VIEW = [];
+const HAY = PETS.map(p => norm([p.kr, p.en, p.jp, p.ability && p.ability.kr, p.ability && p.ability.en, p.ability && p.ability.jp].filter(Boolean).join("|")));
+function cardHTML(i) {
+  const p = PETS[i], u = U();
+  return `<button type="button" class="pet" data-i="${i}" style="${gVars(p.grade)}"><span class="ic">${iconHTML(p)}<span class="gt"><i></i>${esc(u.grade[p.grade] || p.grade || "")}</span></span><b>${esc(petName(p))}</b><small>${esc(abil(p))}</small></button>`;
+}
+function renderDex() {
+  const grid = $("#dxgrid"); if (!grid) return;
+  const u = U(), nq = norm(Q);
+  const hit = PETS.map((p, i) => i).filter(i => !nq || HAY[i].includes(nq));
+  const cnt = { all: hit.length }; ORDER.forEach(k => cnt[k] = hit.filter(i => PETS[i].grade === k).length);
+  $("#dxg").innerHTML = ["all"].concat(ORDER).map(k =>
+    `<button type="button" data-g="${k}" class="${GF === k ? "on" : ""}" aria-pressed="${GF === k}"${k === "all" ? "" : ` style="${gVars(k)}"`}>${k === "all" ? "" : '<i class="gdot"></i>'}${k === "all" ? u.all : u.grade[k]} <em>${cnt[k]}</em></button>`).join("");
+  VIEW = hit.filter(i => GF === "all" || PETS[i].grade === GF);
+  grid.innerHTML = VIEW.map(cardHTML).join("");
+  $("#dxn").innerHTML = `<strong>${VIEW.length}</strong>${esc(u.unit)}`;
+  const e = $("#dxe"); e.hidden = VIEW.length > 0; e.textContent = u.noResult;
+  $("#dxs").classList.toggle("has", !!Q);
+}
+
+/* ── 펫 상세 팝업 ── */
+const ov = $("#ov"), dlg = $("#dlg"), dlgB = $("#dlgB"), btnP = $("#dlgP"), btnN = $("#dlgNx");
+let CUR = -1, LIST = [], lastFocus = null;
+/* "이 등급에 붙을 수 있는 서브 능력" + 개수. 문구에 {n} 이 있으면 그 자리에 넣고,
+   없으면 단위가 한·일 글자(종/種)일 때 "N종", 영문 단위일 때 "(N)" 으로 붙인다 */
+const subsCanHTML = (u, n) => {
+  const s = String(u.subsCan || ""), unit = String(u.unit || "");
+  if (s.indexOf("{n}") >= 0) return s.replace("{n}", `<b>${n}</b>`);
+  return /^[\s\w]/.test(unit) || !unit ? `${s} (<b>${n}</b>)` : `${s} <b>${n}</b>${esc(unit)}`;
+};
+const num = v => { const n = parseFloat(String(v == null ? "" : v).replace(/[^0-9.\-]/g, "")); return isFinite(n) ? n : NaN; };
+function fillPet() {
+  const p = PETS[CUR], g = GD[p.grade] || GD.B, u = U(), gi = u.gradeInfo[p.grade] || {};
+  dlg.setAttribute("style", gVars(p.grade));
+  const shown = petName(p);
+  const alts = ["kr", "en", "jp"].filter(l => p[l] && p[l] !== shown).map(l => esc(p[l]));
+  const a = num(p.lv1), z = num(p.max);
+  const ratio = a > 0 && z > 0 ? Math.max(3, Math.min(100, a / z * 100)) : null;
+  const subs = SUBS.filter(s => s && Array.isArray(s.grades) && s.grades.indexOf(p.grade) >= 0);
+  dlgB.innerHTML =
+    `<div class="pv-top"><div class="pv-ic">${iconHTML(p)}</div><div><span class="gbadge"><i></i>${esc(u.grade[p.grade] || p.grade || "")}</span><h2 id="dlgT">${esc(shown)}</h2>${alts.length ? `<p class="alt">${alts.join(" · ")}</p>` : ""}</div></div>` +
+    `<section class="pv-sec"><h3>${u.unique}</h3><div class="abox"><b>${esc(abil(p))}</b>` +
+      `<div class="lvv"><span>Lv.1<strong>${esc(p.lv1 == null ? "–" : p.lv1)}</strong></span><span class="ar" aria-hidden="true">→</span><span class="r">Lv.${g.max} · ${u.maxLv}<strong>${esc(p.max == null ? "–" : p.max)}</strong></span></div>` +
+      `<div class="lvb" aria-hidden="true">${ratio != null ? `<em style="left:${ratio.toFixed(1)}%"></em>` : ""}</div></div></section>` +
+    `<section class="pv-sec"><h3>${u.info}</h3><table class="info"><tbody>` +
+      `<tr><th scope="row">${u.gradeL}</th><td><i class="gdot"></i>${esc(u.grade[p.grade] || p.grade || "")}</td></tr>` +
+      `<tr><th scope="row">${u.maxLv}</th><td>Lv.${g.max}</td></tr>` +
+      `<tr><th scope="row">${u.sub}</th><td>${gi.sub || u.none}</td></tr>` +
+      `<tr><th scope="row">${u.subUp}</th><td>${gi.up && gi.up !== "–" && gi.up !== "-" ? gi.up : u.none}</td></tr>` +
+      `<tr><th scope="row">${u.feedExp}</th><td>${g.feed} <span class="sm">${u.feedNote}</span></td></tr>` +
+      `<tr><th scope="row">${u.how}</th><td><div class="how">${gi.how || ""}</div></td></tr>` +
+    `</tbody></table></section>` +
+    (subs.length ? `<details class="pv-subs"${SHOT ? " open" : ""}><summary><span>${subsCanHTML(u, subs.length)}</span>${SVG.chev}</summary><ul class="chips">${subs.map(s =>
+      `<li>${esc(tx(s.name))}${s.value != null && s.value !== "" ? ` <em>${esc(s.value)}</em>` : ""}</li>`).join("")}</ul></details>` : "");
+  const k = LIST.indexOf(CUR);
+  btnP.disabled = k <= 0; btnN.disabled = k < 0 || k >= LIST.length - 1;
+  $("#dlgN").textContent = `${k + 1} / ${LIST.length}`;
+  dlgB.scrollTop = 0;
+}
+function setPetParam(name) {
+  const p = new URLSearchParams(location.search);
+  if (name) p.set("pet", name); else p.delete("pet");
+  const s = p.toString();
+  try { history.replaceState(history.state, "", location.pathname + (s ? "?" + s : "") + location.hash); } catch (e) { /* file:// 등 */ }
+}
+function lockScroll(on) {
+  const de = document.documentElement;
+  if (on) { const w = innerWidth - de.clientWidth; de.classList.add("lock"); if (w > 0) document.body.style.paddingRight = w + "px"; }
+  else { de.classList.remove("lock"); document.body.style.paddingRight = ""; }
+}
+function openPet(i, list) {
+  if (!PETS[i]) return;
+  LIST = list && list.indexOf(i) >= 0 ? list : (VIEW.indexOf(i) >= 0 ? VIEW.slice() : [i]);
+  CUR = i;
+  fillPet();
+  if (ov.hidden) {
+    lastFocus = document.activeElement;
+    lockScroll(true); ov.hidden = false;
+    dlg.focus({ preventScroll: true });
+  }
+  setPetParam(PETS[i].kr);
+}
+function closePet() {
+  if (ov.hidden) return;
+  ov.hidden = true; lockScroll(false); setPetParam(null);
+  const card = document.querySelector(`.pet[data-i="${CUR}"]`);
+  const back = card || (lastFocus && document.contains(lastFocus) ? lastFocus : null);
+  if (back && back.focus) back.focus({ preventScroll: true });
+  CUR = -1;
+}
+function stepPet(d) {
+  const k = LIST.indexOf(CUR) + d;
+  if (k < 0 || k >= LIST.length) return;
+  CUR = LIST[k]; fillPet(); setPetParam(PETS[CUR].kr);
+}
+function trapTab(e) {
+  const f = Array.from(dlg.querySelectorAll('button:not([disabled]),summary,a[href],input,[tabindex]:not([tabindex="-1"])')).filter(x => x.offsetParent !== null);
+  if (!f.length) { e.preventDefault(); return; }
+  const first = f[0], last = f[f.length - 1], a = document.activeElement;
+  if (e.shiftKey && (a === first || a === dlg || !dlg.contains(a))) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && (a === last || !dlg.contains(a))) { e.preventDefault(); first.focus(); }
+}
+
+/* 팝업 이벤트 */
+$("#dlgX").onclick = closePet;
+btnP.onclick = () => stepPet(-1);
+btnN.onclick = () => stepPet(1);
+let downOnOv = false;
+ov.addEventListener("pointerdown", e => { downOnOv = e.target === ov; });
+ov.addEventListener("click", e => { if (e.target === ov && downOnOv) closePet(); downOnOv = false; });
+document.addEventListener("keydown", e => {
+  if (ov.hidden) return;
+  if (e.key === "Escape") { e.preventDefault(); closePet(); }
+  else if (e.key === "ArrowLeft") { e.preventDefault(); stepPet(-1); }
+  else if (e.key === "ArrowRight") { e.preventDefault(); stepPet(1); }
+  else if (e.key === "Tab") trapTab(e);
+});
+/* 모바일 시트: 손잡이를 아래로 끌면 닫힘 */
+(function () {
+  const grab = $("#grab"); let sy = null, dy = 0;
+  grab.addEventListener("pointerdown", e => { sy = e.clientY; dy = 0; try { grab.setPointerCapture(e.pointerId); } catch (_) {} dlg.style.transition = "none"; });
+  grab.addEventListener("pointermove", e => { if (sy == null) return; dy = Math.max(0, e.clientY - sy); dlg.style.transform = `translateY(${dy}px)`; });
+  const end = () => { if (sy == null) return; sy = null; dlg.style.transition = ""; dlg.style.transform = ""; if (dy > 90) closePet(); };
+  grab.addEventListener("pointerup", end); grab.addEventListener("pointercancel", end);
+})();
+
+/* ── 문서 전체 클릭·입력 ── */
+document.addEventListener("click", e => {
+  const c = e.target.closest(".pet"); if (c) { openPet(+c.dataset.i, VIEW.slice()); return; }
+  const g = e.target.closest("#dxg button"); if (g) { GF = g.dataset.g; renderDex(); return; }
+  if (e.target.closest("#dxc")) { e.preventDefault(); Q = ""; $("#dxq").value = ""; renderDex(); $("#dxq").focus(); return; }
+  const lb = e.target.closest("#langs button");
+  if (lb && lb.dataset.l !== L && N[lb.dataset.l]) {
+    L = lb.dataset.l;
+    const p = new URLSearchParams(location.search); p.set("lang", L);
+    try { history.replaceState(history.state, "", location.pathname + "?" + p.toString() + location.hash); } catch (_) {}
+    render();
+  }
+});
+document.addEventListener("input", e => { if (e.target.id === "dxq") { Q = e.target.value; renderDex(); } });
+
+/* ── 스크롤 따라 현재 단원 탭 표시 ── */
+let SPY = null, spyRaf = 0;
+function spy() {
+  spyRaf = 0;
+  const secs = document.querySelectorAll(".ch"); if (!secs.length) return;
+  const gnbH = $("#gnb").offsetHeight + 24;
+  let cur = secs[0].id;
+  secs.forEach(s => { if (s.getBoundingClientRect().top - gnbH <= 0) cur = s.id; });
+  if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4 && scrollY > 0) cur = secs[secs.length - 1].id;
+  if (cur === SPY) return; SPY = cur;
+  const tabs = $("#tabs");
+  tabs.querySelectorAll("a").forEach(a => { const on = a.dataset.id === cur; a.classList.toggle("on", on); if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+  const on = tabs.querySelector("a.on");
+  if (on && tabs.scrollWidth > tabs.clientWidth) tabs.scrollTo({ left: on.offsetLeft - (tabs.clientWidth - on.offsetWidth) / 2, behavior: SHOT ? "auto" : "smooth" });
+}
+addEventListener("scroll", () => { if (!spyRaf) spyRaf = requestAnimationFrame(spy); }, { passive: true });
+addEventListener("resize", () => { SPY = null; spy(); tabFade(); });
+function tabFade() {
+  const t = $("#tabs"), g = $("#gnb"); if (!t) return;
+  g.classList.toggle("more-l", t.scrollLeft > 2);
+  g.classList.toggle("more-r", t.scrollLeft + t.clientWidth < t.scrollWidth - 2);
+}
+$("#tabs").addEventListener("scroll", tabFade, { passive: true });
+
+/* 기한 배지(D-N / 종료) */
+function tick() {
+  const t = N[L] || {};
+  document.querySelectorAll(".dd-badge[data-dl]").forEach(el => {
+    const d = new Date(el.dataset.dl); if (!el.dataset.dl || isNaN(d)) { el.textContent = ""; return; }
+    const ms = d - Date.now();
+    el.textContent = ms > 0 ? "D-" + Math.ceil(ms / 864e5) : (t.ended || "");
+    el.classList.toggle("end", ms <= 0);
+  });
+}
+
+/* ── 그리기 ── */
+function render() {
+  const t = N[L];
+  if (!t) { $("#main").innerHTML = '<div class="blk">data.js 를 불러오지 못했습니다.</div>'; return; }
+  const u = U();
+  document.documentElement.lang = HTML_LANG[L] || "ko";
+  const title = Array.isArray(t.title) ? t.title.join("") : (t.title || "");
+  document.title = [t.site, title].filter(Boolean).join(" · ");
+  $("#site").textContent = t.site || "";
+  $("#langs").innerHTML = LANGS.map(l => `<button type="button" data-l="${l}" lang="${HTML_LANG[l]}" class="${l === L ? "on" : ""}" aria-pressed="${l === L}">${LANG_NAME[l]}</button>`).join("");
+  $("#ribbon").textContent = t.ribbon || "";
+  $("#title").textContent = title;
+  $("#lead").textContent = t.lead || "";
+  const ch = Array.isArray(t.chapters) ? t.chapters : [];
+  $("#gnb").setAttribute("aria-label", u.tabs);
+  $("#tabs").innerHTML = ch.map(c => `<a href="#${esc(c.id)}" data-id="${esc(c.id)}">${c.nav || c.title || ""}</a>`).join("");
+  $("#side").innerHTML = issuesHTML(t);
+  $("#main").innerHTML = ch.map(c =>
+    `<section class="ch" id="${esc(c.id)}" aria-labelledby="h-${esc(c.id)}"><div class="ch-h"><h2 id="h-${esc(c.id)}">${c.title || ""}</h2>${c.q ? `<p>${c.q}</p>` : ""}</div>${(c.blocks || []).map(b => block(b, t)).join("")}</section>`).join("") +
+    `<footer class="foot">${t.foot ? `<p>${t.foot}</p>` : ""}${N.updated ? `<p class="upd">Updated ${esc(N.updated)}</p>` : ""}</footer>`;
+  const q = $("#dxq");
+  if (q) { q.value = Q; q.placeholder = u.search; q.setAttribute("aria-label", u.search); $("#dxc").setAttribute("aria-label", u.clear); }
+  dlg.setAttribute("aria-label", u.dialog);
+  $("#dlgX").setAttribute("aria-label", u.close);
+  btnP.querySelector("span").textContent = u.prev;
+  btnN.querySelector("span").textContent = u.next;
+  renderDex(); tick(); SPY = null; spy(); tabFade();
+  if (!ov.hidden && CUR >= 0) fillPet();
+}
+
+render();
+setInterval(tick, 60000);
+if (location.hash && !SHOT) { const el = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (el) el.scrollIntoView(); }
+/* ?pet=<한글 이름> 으로 들어오면 바로 열기 */
+const want = qs.get("pet");
+if (want) {
+  const i = PETS.findIndex(p => p.kr === want || p.en === want || p.jp === want);
+  if (i >= 0) openPet(i, VIEW.slice()); else setPetParam(null);
+}
+})();
+</script>
+</body>
+</html>
