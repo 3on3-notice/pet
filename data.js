@@ -50,11 +50,11 @@ window.NOTICE = {
             text: "펫 입양은 신규 펫을 뽑을 수 있는 영역입니다. 1회 뽑기와 10회 뽑기가 존재하며, 10회 뽑기는 포인트와 코인 중 하나를 선택해 뽑을 수 있습니다(코인 1회 2,000 · 10회 20,000 / 포인트 10회 10 포인트). 골드 펫 뽑기 티켓(1회 1장 · 10회 10장)으로도 입양할 수 있습니다.<br>펫 입양에서는 확률에 따라 브론즈/실버/골드 펫을 획득할 수 있습니다. 코인 · 포인트 · 티켓 어느 것으로 뽑아도 확률은 같고, 같은 등급의 펫은 모두 같은 확률로 나옵니다. 결과는 바로 표시되며, 아래 버튼으로 확률 페이지를 볼 수 있습니다.",
             items: [["브론즈", 70, "6종"], ["실버", 25, "4종"], ["골드", 5, "15종"], ["플래티넘", 0, "입양에서는 나오지 않으며, 펫 조합으로 획득"]],
             note: "펫 입양 위치: 캐릭터 › 펫 › 펫 입양. 기존 실버 · 골드 · 플래티넘 켄넬은 종료되었습니다." },
-          { type: "facts", label: "펫 하우스 — 보유한 펫 관리", photo: "house", marks: [[22.3, 27.8], null, [56.0, 23.9]],
+          { type: "facts", label: "펫 하우스 — 보유한 펫 관리", photo: "house", marks: [[22.3, 27.8], null],
             text: "펫 하우스는 현재 보유한 모든 펫을 확인할 수 있는 영역입니다.", items: [
             ["목록", "장착 중인 펫에는 장착한 캐릭터 얼굴이 표시되고, 필터로 등급별로 볼 수 있습니다."],
-            ["장착 · 해제", "선택한 펫을 지금 캐릭터에 장착하거나 해제합니다. 다른 캐릭터가 장착 중인 펫은 트레이닝만 할 수 있습니다."],
-            ["하우스 확장", "펫 하우스는 기본 200칸입니다. 포인트로 칸을 늘릴 수 있으며, 한 번 확장할 때마다 20칸씩 늘어 최대 500칸(15단계)까지 늘릴 수 있습니다. 비용은 1~5단계 20 포인트 · 6~10단계 30 포인트 · 11~15단계 40 포인트입니다. 다음 확장의 칸 수와 비용은 확장 버튼에 표시됩니다."] ] },
+            ["장착 · 해제", "선택한 펫을 지금 캐릭터에 장착하거나 해제합니다. 다른 캐릭터가 장착 중인 펫은 트레이닝만 할 수 있습니다."] ] },
+          {"type": "facts", "label": "펫 하우스 확장", "photo": "house_expand", "marks": [[20.3, 21.0], [55.0, 21.0], null, null], "items": [["보유 · 칸 수", "화면 위 CURRENT PET에 보유한 펫 수와 칸 수가 표시됩니다. 펫 하우스는 기본 200칸입니다."], ["확장 버튼", "PET HOUSE EXPANSION 버튼에 다음 확장으로 늘어나는 칸 수(20칸)와 비용이 표시됩니다. 누르면 확인 창이 나오고, 확장하면 20칸이 늘어납니다(예: 60/200 → 60/220)."], ["비용", "1~5단계 20 포인트 · 6~10단계 30 포인트 · 11~15단계 40 포인트"], ["최대", "15단계까지 확장해 최대 500칸"]]},
           { type: "facts", label: "이별하기 — 펫 판매", photo: "dismiss_btn", marks: [[27.1, 87.3], null, [36.4, 87.3], null], items: [
             ["이별하기 버튼", "하단의 이별하기 버튼으로 원하는 펫을 판매할 수 있습니다."],
             ["받는 코인", "판매 시 코인을 획득할 수 있습니다. 획득하는 코인은 펫 등급별로 다르며(브론즈 100 · 실버 300 · 골드 1,500 · 플래티넘 10,000 코인), 판매 시 나타나는 팝업에서도 확인할 수 있습니다."],
@@ -185,11 +185,11 @@ window.NOTICE = {
             text: "ADOPT PET is where you can get new pets. You can adopt 1 or 10 times, and for 10 adoptions you can choose to pay with either Points or Coins (Coins: 2,000 for 1 · 20,000 for 10 / Points: 10 Points for 10). You can also adopt with Gold Pet Adoption Tickets (1 Ticket per adoption · 10 Tickets for 10 adoptions).<br>Adoption gives Bronze, Silver or Gold pets based on the rates. The rates are the same whether you use Coins, Points or Tickets, and all pets within the same grade have an equal chance. Results are shown right away, and the button at the bottom opens the probability page.",
             items: [["Bronze", 70, "6 types"], ["Silver", 25, "4 types"], ["Gold", 5, "15 types"], ["Platinum", 0, "Not available from Adoption; obtained through Pet Combination"]],
             note: "Where to adopt: Characters › Pet › Adopt Pet. The previous Silver · Gold · Platinum Kennels have ended." },
-          { type: "facts", label: "Pet House — Manage Your Pets", photo: "house", marks: [[22.3, 27.8], null, [56.0, 23.9]],
+          { type: "facts", label: "Pet House — Manage Your Pets", photo: "house", marks: [[22.3, 27.8], null],
             text: "PET HOUSE is where you can view all the pets you currently own.", items: [
             ["List", "Equipped pets show the face of the character using them, and you can filter by grade."],
-            ["Equip · Unequip", "Equip the selected pet to the current character or unequip it. Pets equipped by another character can only use Training."],
-            ["Pet House Expansion", "The Pet House starts with 200 slots. Use Points to add more: each expansion adds 20 slots, up to 500 slots (15 levels), and costs 20 Points for levels 1–5, 30 Points for levels 6–10 and 40 Points for levels 11–15. The number of slots and the cost of the next expansion are shown on the expansion button."] ] },
+            ["Equip · Unequip", "Equip the selected pet to the current character or unequip it. Pets equipped by another character can only use Training."] ] },
+          {"type": "facts", "label": "Pet House Expansion", "photo": "house_expand", "marks": [[20.3, 21.0], [55.0, 21.0], null, null], "items": [["Pets · Slots", "CURRENT PET at the top shows how many pets you own and your total slots. The Pet House starts with 200 slots."], ["Expansion Button", "The PET HOUSE EXPANSION button shows how many slots the next expansion adds (20) and its cost. Press it to open the confirmation; each expansion adds 20 slots (e.g. 60/200 → 60/220)."], ["Cost", "20 Points for levels 1–5 · 30 Points for levels 6–10 · 40 Points for levels 11–15"], ["Maximum", "Up to 500 slots after 15 expansions"]]},
           { type: "facts", label: "Dismiss Pet — Sell Pets", photo: "dismiss_btn", marks: [[27.1, 87.3], null, [36.4, 87.3], null], items: [
             ["DISMISS PET Button", "Use the DISMISS PET button at the bottom to sell the pets you choose."],
             ["Coins Received", "You receive Coins when you sell a pet. The amount differs by pet grade (Bronze 100 · Silver 300 · Gold 1,500 · Platinum 10,000 Coins) and is also shown in the pop-up that appears when you sell."],
@@ -320,11 +320,11 @@ window.NOTICE = {
             text: "ペット養子縁組は、新しいペットを引くことができる場所です。1回引きと10回引きがあり、10回引きはポイントとコインのどちらかを選んで引けます（コイン1回 2,000 · 10回 20,000 / ポイント10回 10ポイント）。ゴールドペット養子縁組チケット（1回1枚 · 10回10枚）でも養子縁組できます。<br>ペット養子縁組では、確率に応じてブロンズ/シルバー/ゴールドのペットを獲得できます。コイン・ポイント・チケットのどれで引いても確率は同じで、同じ等級のペットはすべて同じ確率で登場します。結果はすぐに表示され、下のボタンから確率ページを確認できます。",
             items: [["ブロンズ", 70, "6種"], ["シルバー", 25, "4種"], ["ゴールド", 5, "15種"], ["プラチナ", 0, "養子縁組では登場せず、ペット合成で入手"]],
             note: "ペット養子縁組の場所：キャラクター › ペット › ペット養子縁組。以前のシルバー・ゴールド・プラチナケンネルは終了しました。" },
-          { type: "facts", label: "ペットハウス — 所持ペットの管理", photo: "house", marks: [[22.3, 27.8], null, [56.0, 23.9]],
+          { type: "facts", label: "ペットハウス — 所持ペットの管理", photo: "house", marks: [[22.3, 27.8], null],
             text: "ペットハウスは、現在所持しているすべてのペットを確認できる場所です。", items: [
             ["一覧", "装着中のペットには装着しているキャラクターの顔が表示され、フィルターで等級別に見ることができます。"],
-            ["装着・解除", "選んだペットを今のキャラクターに装着、または解除します。他のキャラクターが装着中のペットはトレーニングのみできます。"],
-            ["ペットハウス拡張", "ペットハウスは基本200枠です。ポイントで枠を増やせ、1回の拡張ごとに20枠ずつ、最大500枠（15段階）まで増やせます。費用は1～5段階が20ポイント・6～10段階が30ポイント・11～15段階が40ポイントです。次の拡張の枠数と費用は拡張ボタンに表示されます。"] ] },
+            ["装着・解除", "選んだペットを今のキャラクターに装着、または解除します。他のキャラクターが装着中のペットはトレーニングのみできます。"] ] },
+          {"type": "facts", "label": "ペットハウス拡張", "photo": "house_expand", "marks": [[20.3, 21.0], [55.0, 21.0], null, null], "items": [["所持数・枠数", "画面上部のCURRENT PETに所持ペット数と枠数が表示されます。ペットハウスは基本200枠です。"], ["拡張ボタン", "PET HOUSE EXPANSIONボタンに次の拡張で増える枠数（20枠）と費用が表示されます。押すと確認画面が表示され、拡張すると20枠増えます（例：60/200 → 60/220）。"], ["費用", "1～5段階 20ポイント・6～10段階 30ポイント・11～15段階 40ポイント"], ["最大", "15段階まで拡張して最大500枠"]]},
           { type: "facts", label: "お別れ — ペットの売却", photo: "dismiss_btn", marks: [[27.1, 87.3], null, [36.4, 87.3], null], items: [
             ["お別れボタン", "下部のお別れボタンで、選んだペットを売却できます。"],
             ["獲得コイン", "売却するとコインを獲得できます。獲得できるコインはペットの等級によって異なり（ブロンズ100・シルバー300・ゴールド1,500・プラチナ10,000コイン）、売却時に表示されるポップアップでも確認できます。"],

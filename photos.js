@@ -1,4 +1,7 @@
 window.PHOTOS = {
+  house_expand: { src: "img/house_expand.jpg",
+    label: {"kr": "펫 하우스 확장", "en": "Pet House Expansion", "jp": "ペットハウス拡張"},
+    cap: {"kr": "확장 후: 보유 · 칸 수가 60/200 → 60/220으로 늘어났습니다.", "en": "After expanding: 60/200 → 60/220.", "jp": "拡張後：60/200 → 60/220 に増えました。"} },
   lobby: { src: "img/lobby.jpg",
     label: {"kr": "로비 화면 (캐릭터 메뉴)", "en": "Lobby (Characters menu)", "jp": "ロビー画面（キャラクターメニュー）"},
     cap: {"kr": "로비 왼쪽 메뉴에서 캐릭터(CHARACTERS)를 고릅니다.", "en": "Select CHARACTERS from the lobby menu on the left.", "jp": "ロビー左側のメニューでキャラクター（CHARACTERS）を選択します。"} },
