@@ -21,7 +21,7 @@ window.NOTICE = {
       { id: "overview", nav: "변경 펫 개요", title: "펫 시스템이 이렇게 바뀌었어요", q: "조건 없이 바로 발동하고, 키울수록 강해지고, 능력을 더 많이 장착할 수 있어요. 핵심 변경점 5가지를 먼저 확인해 보세요.",
         blocks: [
           {"type": "keys", "items": [["발동 조건 삭제", "장착만 하면 능력 상시 적용"], ["레벨업 성장", "레벨이 오를수록 고유 능력 상승"], ["서브 능력 최대 3개", "고유 능력 + 서브 능력 3개 장착"], ["펫 입양", "코인 · 포인트 모두 가능, 확률 동일"], ["펫 조합", "코인 · 포인트 모두 가능, 조합으로 플래티넘 펫 획득"]]},
-          {"type": "compare", "eyebrow": "AT A GLANCE", "label": "기존 펫 vs 변경 펫 한눈에 보기", "head": ["구분", "기존 펫", "변경 펫"], "rows": [["능력 발동", "인게임 조건 충족 시에만 발동", "조건 없이 상시 적용"], ["능력 개수", "효과 1개", "고유 능력 1개 + 서브 능력 최대 3개"], ["능력 맞추기", "펫 효과 변경 티켓으로 원하는 효과에 맞춤", "펫마다 고유 능력 보유, 레벨업마다 수치 상승"], ["서브 능력", "없음", "레벨에 따라 해금, 등급별 범위에서 무작위로 부여"], ["획득처", "실버 · 골드 · 플래티넘 켄넬", "캐릭터 › 펫 › 펫 입양"], ["뽑기 재화", "켄넬별 지정 재화", "코인 · 포인트 모두 가능, 확률 동일"], ["플래티넘 획득", "골드 · 플래티넘 켄넬에서 확률 획득", "펫 조합으로 획득"]]} ] },
+          {"type": "compare", "eyebrow": "AT A GLANCE", "label": "기존 펫 vs 변경 펫 한눈에 보기", "head": ["구분", "기존 펫", "변경 펫"], "rows": [["능력 발동", "인게임 조건 충족 시에만 발동", "조건 없이 상시 적용"], ["능력 개수", "효과 1개", "고유 능력 1개 + 서브 능력 최대 3개"], ["능력 맞추기", "펫 효과 변경 티켓으로 원하는 효과에 맞춤", "펫마다 고유 능력 보유, 레벨업마다 수치 상승"], ["서브 능력", "없음", "등급별 범위에서 무작위로 부여, 펫 레벨에 따라 해금 및 수치 추가 상승"], ["획득처", "실버 · 골드 · 플래티넘 켄넬", "캐릭터 › 펫 › 펫 입양"], ["뽑기 재화", "켄넬별 지정 재화", "코인 · 포인트 모두 가능, 확률 동일"], ["플래티넘 획득", "골드 · 플래티넘 켄넬에서 확률 획득", "펫 조합으로 획득"]]} ] },
 
       { id: "where", nav: "펫 위치", title: "펫은 어디에 있나요?", q: "기존에 매니지먼트에서 이용하던 펫을 이제 캐릭터 메뉴에서 이용할 수 있습니다.",
         blocks: [
@@ -40,7 +40,7 @@ window.NOTICE = {
 
       { id: "system", nav: "펫 시스템 설명", title: "펫 시스템은 어떻게 되어 있나요?", q: "펫 메뉴의 각 화면에서 할 수 있는 것을 확인하세요.",
         blocks: [
-          { type: "facts", label: "펫 라인업 — 이 캐릭터의 펫", photo: "lineup", marks: [[75.9, 25.0], null, [19.8, 89.6], null],
+          { type: "facts", label: "펫 라인업 — 이 캐릭터의 펫", photo: "lineup", marks: [[75.9, 25.0], null, [19.5, 86.5], null],
             text: "펫 라인업은 캐릭터가 장착한 펫의 정보를 확인하고 레벨업할 수 있는 공간입니다.", items: [
             ["화면 구성", "장착한 펫의 이름 · 등급 · 레벨 · 경험치와 고유 능력 · 서브 능력 수치를 확인할 수 있습니다. 아직 해금되지 않은 서브 능력 칸에는 해금 레벨이 표시됩니다."],
             ["펫 선택하기", "장착한 펫이 없으면 펫 선택하기로 펫 하우스에 가서 고르면 바로 장착됩니다. 보유한 펫이 없으면 펫 입양 버튼이 나옵니다."],
@@ -55,19 +55,19 @@ window.NOTICE = {
             ["목록", "장착 중인 펫에는 장착한 캐릭터 얼굴이 표시되고, 필터로 등급별로 볼 수 있습니다."],
             ["장착 · 해제", "선택한 펫을 지금 캐릭터에 장착하거나 해제합니다. 다른 캐릭터가 장착 중인 펫은 트레이닝만 할 수 있습니다."] ] },
           {"type": "facts", "label": "펫 하우스 확장", "photo": "house_expand", "marks": [[20.3, 21.0], [55.0, 21.0], null, null], "items": [["보유 · 칸 수", "화면 위 CURRENT PET에 보유한 펫 수와 칸 수가 표시됩니다. 펫 하우스는 기본 200칸입니다."], ["확장 버튼", "PET HOUSE EXPANSION 버튼에 다음 확장으로 늘어나는 칸 수(20칸)와 비용이 표시됩니다. 누르면 확인 창이 나오고, 확장하면 20칸이 늘어납니다(예: 60/200 → 60/220)."], ["비용", "1~5단계 20 포인트 · 6~10단계 30 포인트 · 11~15단계 40 포인트"], ["최대", "15단계까지 확장해 최대 500칸"]]},
-          { type: "facts", label: "이별하기 — 펫 판매", photo: "dismiss_btn", marks: [[27.1, 87.3], null, [36.4, 87.3], null], items: [
+          { type: "facts", label: "이별하기 — 펫 판매", photo: "dismiss_btn", marks: [[27.1, 89.3], null, [36.4, 89.3], null], items: [
             ["이별하기 버튼", "하단의 이별하기 버튼으로 원하는 펫을 판매할 수 있습니다."],
             ["받는 코인", "판매 시 코인을 획득할 수 있습니다. 획득하는 코인은 펫 등급별로 다르며(브론즈 100 · 실버 300 · 골드 1,500 · 플래티넘 10,000 코인), 판매 시 나타나는 팝업에서도 확인할 수 있습니다."],
             ["모두 선택", "모두 선택으로 여러 마리를 한 번에 판매할 수 있습니다."],
             ["판매할 수 없는 펫", "장착 중이거나 잠근 펫은 판매할 수 없으며, 판매한 펫은 다시 쓸 수 없습니다."] ] },
-          { type: "facts", label: "잠금 — 아끼는 펫 보호", photo: "lock", marks: [[12.4, 87.9], [37.6, 32.0]], items: [
+          { type: "facts", label: "잠금 — 아끼는 펫 보호", photo: "lock", marks: [[12.4, 87.9], [32.0, 27.5]], items: [
             ["잠금 버튼", "하단의 잠금 버튼으로 현재 선택한 펫을 잠그거나 잠금 해제할 수 있습니다."],
             ["안전장치", "잠금 기능은 잠긴 펫이 일괄 판매되거나, 성장 재료로 소모되거나, 조합 재료에 포함되지 않도록 막아 주는 안전장치입니다. 잠긴 펫에는 자물쇠 표시가 붙으며, 잠가도 장착은 할 수 있습니다."] ] },
           { type: "facts", label: "펫 성장 — 트레이닝 버튼", photo: "training_entry", marks: [[36.5, 64.4], [92.8, 63.8]],
             text: "펫 성장은 펫 라인업 또는 펫 하우스에서 트레이닝 버튼을 눌러 진행할 수 있습니다. 우측 하단의 트레이닝 버튼을 누르면 해당 펫을 성장시킬 수 있는 화면으로 이동합니다.", items: [
             ["펫 라인업에서", "트레이닝을 누르면 현재 캐릭터가 장착한 펫을 성장시킬 수 있습니다."],
             ["펫 하우스에서", "트레이닝을 누르면 선택한 펫을 성장시킬 수 있습니다. 장착하지 않은 펫도 성장시킬 수 있습니다."] ] },
-          { type: "facts", label: "트레이닝 화면 — 다른 펫을 재료로 레벨업", photo: "pet_detail", marks: [[19.4, 33.2], [65.4, 22.3], [18.0, 89.4], [70.2, 68.6], null, [83.1, 42.7], null],
+          { type: "facts", label: "트레이닝 화면 — 다른 펫을 재료로 레벨업", photo: "pet_detail", marks: [[18.6, 36.5], [65.4, 22.3], [18.0, 89.4], [70.2, 68.6], null, null, null],
             text: "트레이닝 버튼을 누르면 나타나는 화면입니다.", items: [
             ["레벨 · 고유 능력 · 서브 능력", "좌측에서 순서대로 레벨, 고유 능력, 서브 능력을 확인할 수 있습니다. 레벨은 성장시킬 펫의 현재 레벨입니다."],
             ["재료 목록", "우측은 펫을 성장시키기 위해 재료로 사용할 수 있는 펫을 리스트 형태로 보여주는 영역입니다. 우측에서 펫을 선택하면 해당 펫이 재료로 지정되며, 잠긴 펫은 선택할 수 없습니다. 장착 중인 펫도 재료로 쓸 수 없습니다."],
@@ -76,18 +76,18 @@ window.NOTICE = {
             ["재료 비용 · 경험치", "재료 1마리당 100 코인이 들며, 재료로 쓴 펫의 등급에 따라 경험치 브론즈 10 · 실버 20 · 골드 50 · 플래티넘 200을 얻습니다."],
             ["키운 펫을 재료로", "기본 경험치에 그 펫에 투자된 경험치의 3%가 더해집니다."],
             ["만렙 초과분", "최대 레벨을 넘는 경험치는 적용되지 않습니다."] ] },
-          { type: "facts", label: "서브 능력 등장 — 등급별 서브 능력 목록", photo: "subs", marks: [[7.4, 24.4], [79.7, 27.0]],
+          { type: "facts", label: "서브 능력 등장 — 등급별 서브 능력 목록", photo: "subs", marks: [[5.5, 24.4], [79.7, 27.0]],
             text: "성장 페이지에서 서브 능력 등장 버튼을 누르면 등장할 수 있는 모든 서브 능력을 확인할 수 있습니다.", items: [
             ["등급별 목록", "해당 페이지에서는 펫 등급별로 등장할 수 있는 서브 능력을 확인할 수 있습니다. 예를 들어 플래티넘 펫을 성장시키는 중에 하단의 서브 능력 등장 버튼을 누르면, 플래티넘 등급에서 등장하는 서브 능력을 확인할 수 있습니다."],
             ["초기 수치", "목록의 수치는 초기 수치로, 슬롯 해금 시 적용되며 강화하면 수치가 상승합니다."] ] },
-          { type: "facts", label: "펫 조합 — 같은 등급끼리 합쳐 상위 등급에 도전", photo: "combination", marks: [[21.8, 27.8], [67.0, 37.2], [80.9, 76.6], [65.6, 57.1], [27.1, 88.4]],
+          { type: "facts", label: "펫 조합 — 같은 등급끼리 합쳐 상위 등급에 도전", photo: "combination", marks: [[20.7, 34.6], [65.5, 33.0], [79.3, 76.6], [64.3, 57.1], [26.7, 88.9]],
             text: "펫 조합에서는 보유한 펫을 조합하여 상위 등급 펫 획득에 도전할 수 있습니다.", items: [
             ["같은 등급끼리", "조합은 동일한 등급의 펫끼리만 가능합니다. 장착 중인 펫은 목록에 나오지 않습니다."],
             ["조합 슬롯", "조합할 펫을 선택한 뒤 처음 선택한 펫과 같은 등급의 펫을 조합 슬롯에 넣습니다."],
             ["필요한 재화", "슬롯에 넣으면 우측 하단에서 조합에 필요한 재화를 확인할 수 있습니다."],
             ["출현 확률", "재료를 다 채우면 결과로 나올 수 있는 등급과 확률이 표시됩니다."],
             ["일괄 조합", "등급을 골라 한 번에 조합하며, 낮은 등급부터 진행됩니다. 레벨이 낮은 펫부터 쓰고, 묶음(코인 5마리 · 포인트 2마리)을 채우지 못한 펫은 남습니다. 한 번에 최대 200마리까지 사용할 수 있습니다(코인 조합 최대 40회 · 포인트 조합 최대 100회)."] ] },
-          { type: "facts", label: "사용 재화 변경 — 코인 · 포인트", photo: "combination_point", marks: [[86.7, 63.7], [72.1, 36.6], [82.4, 77.2]], items: [
+          { type: "facts", label: "사용 재화 변경 — 코인 · 포인트", photo: "combination_point", marks: [[83.6, 65.8], [72.1, 36.6], [82.4, 77.2]], items: [
             ["사용 재화 변경 버튼", "사용 재화 변경 버튼으로 조합에 사용할 재화를 바꿀 수 있습니다. 재화를 바꿔도 상위 등급 확률은 같습니다."],
             ["필요한 펫 수", "포인트로 조합하면 같은 등급의 펫이 2마리만 필요하지만, 코인으로 조합하면 5마리가 필요합니다."],
             ["비용", "필요한 마리 수와 함께 비용도 바뀝니다. 등급별 비용은 아래 표에서 확인할 수 있습니다."] ] },
@@ -156,7 +156,7 @@ window.NOTICE = {
       { id: "overview", nav: "Overview of Changes", title: "Here's How the Pet System Has Changed", q: "Abilities now work without conditions, grow stronger as you level up, and you can equip more of them. Check the 5 key changes first.",
         blocks: [
           {"type": "keys", "items": [["No Activation Conditions", "Abilities always apply once equipped"], ["Level-Up Growth", "Unique Ability rises as the pet levels up"], ["Up to 3 Sub Abilities", "Unique Ability + 3 Sub Abilities"], ["Adopt Pet", "Coins or Points, same rates"], ["Pet Combination", "Coins or Points, get Platinum pets by combining"]]},
-          {"type": "compare", "eyebrow": "AT A GLANCE", "label": "Previous Pets vs New Pets", "head": ["Category", "Previous Pets", "New Pets"], "rows": [["Activation", "Only when in-game conditions were met", "Always active, no conditions"], ["Number of Abilities", "1 effect", "1 Unique Ability + up to 3 Sub Abilities"], ["Getting the One You Want", "Matched with Pet Skill Change Tickets", "Each pet has its own Unique Ability that rises every level"], ["Sub Abilities", "None", "Unlocked by level, assigned at random from a pool by grade"], ["Where to Get", "Silver · Gold · Platinum Kennels", "Characters › Pet › Adopt Pet"], ["Currency", "Set currency per Kennel", "Coins or Points, same rates"], ["Getting Platinum", "Chance from Gold · Platinum Kennels", "Pet Combination"]]} ] },
+          {"type": "compare", "eyebrow": "AT A GLANCE", "label": "Previous Pets vs New Pets", "head": ["Category", "Previous Pets", "New Pets"], "rows": [["Activation", "Only when in-game conditions were met", "Always active, no conditions"], ["Number of Abilities", "1 effect", "1 Unique Ability + up to 3 Sub Abilities"], ["Getting the One You Want", "Matched with Pet Skill Change Tickets", "Each pet has its own Unique Ability that rises every level"], ["Sub Abilities", "None", "Assigned at random from a pool by grade; unlocked and further boosted as the pet levels up"], ["Where to Get", "Silver · Gold · Platinum Kennels", "Characters › Pet › Adopt Pet"], ["Currency", "Set currency per Kennel", "Coins or Points, same rates"], ["Getting Platinum", "Chance from Gold · Platinum Kennels", "Pet Combination"]]} ] },
 
       { id: "where", nav: "Where to Find Pets", title: "Where are my pets?", q: "Pets that you used to access from Management are now available from the Characters menu.",
         blocks: [
@@ -175,7 +175,7 @@ window.NOTICE = {
 
       { id: "system", nav: "Pet System", title: "How does the Pet System work?", q: "See what you can do on each Pet menu screen.",
         blocks: [
-          { type: "facts", label: "Pet Lineup — This Character's Pet", photo: "lineup", marks: [[75.9, 25.0], null, [19.8, 89.6], null],
+          { type: "facts", label: "Pet Lineup — This Character's Pet", photo: "lineup", marks: [[75.9, 25.0], null, [19.5, 86.5], null],
             text: "PET LINEUP is where you can view and level up the pet equipped by your character.", items: [
             ["Screen", "See your equipped pet's name, grade, level and EXP, and its Unique and Sub Ability values. Sub Ability slots not yet unlocked show the level at which they unlock."],
             ["Select Pet", "If no pet is equipped, use Select Pet to choose one in the Pet House and it is equipped right away. If you have no pets, an Adopt Pet button appears."],
@@ -190,19 +190,19 @@ window.NOTICE = {
             ["List", "Equipped pets show the face of the character using them, and you can filter by grade."],
             ["Equip · Unequip", "Equip the selected pet to the current character or unequip it. Pets equipped by another character can only use Training."] ] },
           {"type": "facts", "label": "Pet House Expansion", "photo": "house_expand", "marks": [[20.3, 21.0], [55.0, 21.0], null, null], "items": [["Pets · Slots", "CURRENT PET at the top shows how many pets you own and your total slots. The Pet House starts with 200 slots."], ["Expansion Button", "The PET HOUSE EXPANSION button shows how many slots the next expansion adds (20) and its cost. Press it to open the confirmation; each expansion adds 20 slots (e.g. 60/200 → 60/220)."], ["Cost", "20 Points for levels 1–5 · 30 Points for levels 6–10 · 40 Points for levels 11–15"], ["Maximum", "Up to 500 slots after 15 expansions"]]},
-          { type: "facts", label: "Dismiss Pet — Sell Pets", photo: "dismiss_btn", marks: [[27.1, 87.3], null, [36.4, 87.3], null], items: [
+          { type: "facts", label: "Dismiss Pet — Sell Pets", photo: "dismiss_btn", marks: [[27.1, 89.3], null, [36.4, 89.3], null], items: [
             ["DISMISS PET Button", "Use the DISMISS PET button at the bottom to sell the pets you choose."],
             ["Coins Received", "You receive Coins when you sell a pet. The amount differs by pet grade (Bronze 100 · Silver 300 · Gold 1,500 · Platinum 10,000 Coins) and is also shown in the pop-up that appears when you sell."],
             ["SELECT ALL", "Use SELECT ALL to sell several pets at once."],
             ["Pets You Can't Sell", "Equipped or locked pets can't be sold, and pets you sell can't be used again."] ] },
-          { type: "facts", label: "Lock — Protect Your Favorite Pets", photo: "lock", marks: [[12.4, 87.9], [37.6, 32.0]], items: [
+          { type: "facts", label: "Lock — Protect Your Favorite Pets", photo: "lock", marks: [[12.4, 87.9], [32.0, 27.5]], items: [
             ["LOCK Button", "Use the LOCK button at the bottom to lock or unlock the selected pet."],
             ["Safety Feature", "Locking keeps a pet from being sold in bulk, used up as a growth material, or added as a combination material. Locked pets show a lock icon and can still be equipped."] ] },
           { type: "facts", label: "Pet Growth — TRAINING Button", photo: "training_entry", marks: [[36.5, 64.4], [92.8, 63.8]],
             text: "You can raise pets by pressing the TRAINING button in PET LINEUP or PET HOUSE. Pressing the TRAINING button at the bottom right takes you to the screen where you can raise that pet.", items: [
             ["From PET LINEUP", "Press TRAINING to raise the pet equipped by the current character."],
             ["From PET HOUSE", "Press TRAINING to raise the selected pet. Pets that aren't equipped can be raised too."] ] },
-          { type: "facts", label: "Training Screen — Level Up with Other Pets as Materials", photo: "pet_detail", marks: [[19.4, 33.2], [65.4, 22.3], [18.0, 89.4], [70.2, 68.6], null, [83.1, 42.7], null],
+          { type: "facts", label: "Training Screen — Level Up with Other Pets as Materials", photo: "pet_detail", marks: [[18.6, 36.5], [65.4, 22.3], [18.0, 89.4], [70.2, 68.6], null, null, null],
             text: "This screen appears when you press the TRAINING button.", items: [
             ["Level · Unique Ability · Sub Ability", "On the left, you can check the Level, Unique Ability and Sub Abilities in order. Level is the current level of the pet you are raising."],
             ["Material List", "The right side lists the pets you can use as materials to raise your pet. Select a pet there to set it as a material. Locked pets can't be selected, and equipped pets can't be used as materials either."],
@@ -211,18 +211,18 @@ window.NOTICE = {
             ["Material Cost · EXP", "Each material pet costs 100 Coins and gives EXP based on its grade: Bronze 10 · Silver 20 · Gold 50 · Platinum 200."],
             ["Raised Pets as Materials", "3% of the EXP invested in that pet is added to its base EXP."],
             ["Over Max Level", "EXP exceeding the max level is not carried over."] ] },
-          { type: "facts", label: "Available Sub Abilities — Sub Abilities by Grade", photo: "subs", marks: [[7.4, 24.4], [79.7, 27.0]],
+          { type: "facts", label: "Available Sub Abilities — Sub Abilities by Grade", photo: "subs", marks: [[5.5, 24.4], [79.7, 27.0]],
             text: "Press the AVAILABLE SUB ABILITIES button on the growth screen to see all the Sub Abilities that can appear.", items: [
             ["List by Grade", "This page shows the Sub Abilities that can appear for each pet grade. For example, if you press the AVAILABLE SUB ABILITIES button at the bottom while raising a Platinum pet, you can see the Sub Abilities that appear for the Platinum grade."],
             ["Initial Value", "The values on the list are initial values. The initial value is applied when the slot is unlocked, and increases when the sub ability is upgraded."] ] },
-          { type: "facts", label: "Pet Combination — Combine the Same Grade for a Chance at a Higher Grade", photo: "combination", marks: [[21.8, 27.8], [67.0, 37.2], [80.9, 76.6], [65.6, 57.1], [27.1, 88.4]],
+          { type: "facts", label: "Pet Combination — Combine the Same Grade for a Chance at a Higher Grade", photo: "combination", marks: [[20.7, 34.6], [65.5, 33.0], [79.3, 76.6], [64.3, 57.1], [26.7, 88.9]],
             text: "In PET COMBINATION, you can combine pets you own for a chance to get a higher-grade pet.", items: [
             ["Same Grade Only", "Only pets of the same grade can be combined. Equipped pets don't appear in the list."],
             ["Combination Slots", "Select a pet to combine, then add pets of the same grade as the first one to the combination slots."],
             ["Required Currency", "Once pets are in the slots, the currency needed for the combination is shown at the bottom right."],
             ["Appearance Rate", "Once all slots are filled, the possible result grades and their rates are shown."],
             ["Combine All", "Choose grades to combine all at once, starting from the lowest grade. Lower-level pets are used first, and pets that can't fill a set (5 for Coins · 2 for Points) are kept. Up to 200 material pets can be used at once (40 Coin Combinations or 100 Point Combinations)."] ] },
-          { type: "facts", label: "Change Currency — Coins · Points", photo: "combination_point", marks: [[86.7, 63.7], [72.1, 36.6], [82.4, 77.2]], items: [
+          { type: "facts", label: "Change Currency — Coins · Points", photo: "combination_point", marks: [[83.6, 65.8], [72.1, 36.6], [82.4, 77.2]], items: [
             ["COMBINATION TYPE Button", "Use the COMBINATION TYPE button to change the currency used for the combination. The upgrade rate stays the same whichever currency you use."],
             ["Number of Pets Needed", "Combining with Points needs only 2 pets of the same grade, while combining with Coins needs 5."],
             ["Cost", "The cost changes along with the number of pets. See the table below for the cost by grade."] ] },
@@ -291,7 +291,7 @@ window.NOTICE = {
       { id: "overview", nav: "変更概要", title: "ペットシステムはこう変わりました", q: "条件なしですぐ発動し、育てるほど強くなり、より多くの能力を装着できます。まずは主な変更点5つをご確認ください。",
         blocks: [
           {"type": "keys", "items": [["発動条件の削除", "装着するだけで能力が常に適用"], ["レベルアップで成長", "レベルが上がるほど固有能力が上昇"], ["サブ能力最大3つ", "固有能力 + サブ能力3つを装着"], ["ペット養子縁組", "コイン・ポイントどちらも可能、確率は同じ"], ["ペット合成", "コイン・ポイントどちらも可能、合成でプラチナペットを獲得"]]},
-          {"type": "compare", "eyebrow": "AT A GLANCE", "label": "以前のペット vs 新しいペット", "head": ["区分", "以前のペット", "新しいペット"], "rows": [["能力の発動", "ゲーム内の条件を満たした時のみ発動", "条件なしで常に適用"], ["能力の数", "効果1つ", "固有能力1つ + サブ能力最大3つ"], ["能力の合わせ方", "ペット効果変更チケットで希望の効果に変更", "ペットごとに固有能力があり、レベルアップごとに数値が上昇"], ["サブ能力", "なし", "レベルに応じて解放、等級別の範囲からランダムで付与"], ["入手先", "シルバー・ゴールド・プラチナケンネル", "キャラクター › ペット › ペット養子縁組"], ["ガチャの通貨", "ケンネルごとの指定通貨", "コイン・ポイントどちらも可能、確率は同じ"], ["プラチナの入手", "ゴールド・プラチナケンネルで確率入手", "ペット合成で入手"]]} ] },
+          {"type": "compare", "eyebrow": "AT A GLANCE", "label": "以前のペット vs 新しいペット", "head": ["区分", "以前のペット", "新しいペット"], "rows": [["能力の発動", "ゲーム内の条件を満たした時のみ発動", "条件なしで常に適用"], ["能力の数", "効果1つ", "固有能力1つ + サブ能力最大3つ"], ["能力の合わせ方", "ペット効果変更チケットで希望の効果に変更", "ペットごとに固有能力があり、レベルアップごとに数値が上昇"], ["サブ能力", "なし", "等級別の範囲からランダムで付与、ペットのレベルに応じて解放・数値がさらに上昇"], ["入手先", "シルバー・ゴールド・プラチナケンネル", "キャラクター › ペット › ペット養子縁組"], ["ガチャの通貨", "ケンネルごとの指定通貨", "コイン・ポイントどちらも可能、確率は同じ"], ["プラチナの入手", "ゴールド・プラチナケンネルで確率入手", "ペット合成で入手"]]} ] },
 
       { id: "where", nav: "ペットの場所", title: "ペットはどこにありますか？", q: "これまでマネジメントで利用していたペットは、キャラクターメニューから利用できるようになりました。",
         blocks: [
@@ -310,7 +310,7 @@ window.NOTICE = {
 
       { id: "system", nav: "ペットシステム", title: "ペットシステムはどうなっていますか？", q: "ペットメニューの各画面でできることをご覧ください。",
         blocks: [
-          { type: "facts", label: "ペットラインアップ — このキャラクターのペット", photo: "lineup", marks: [[75.9, 25.0], null, [19.8, 89.6], null],
+          { type: "facts", label: "ペットラインアップ — このキャラクターのペット", photo: "lineup", marks: [[75.9, 25.0], null, [19.5, 86.5], null],
             text: "ペットラインアップは、キャラクターが装着しているペットの情報を確認し、レベルアップできる場所です。", items: [
             ["画面", "装着中のペットの名前・等級・レベル・経験値と、固有能力・サブ能力の数値を確認できます。まだ解放されていないサブ能力の枠には解放レベルが表示されます。"],
             ["ペットを選択", "ペットを装着していない場合は、ペットを選択からペットハウスで選ぶとすぐに装着されます。ペットを持っていない場合は、ペット養子縁組ボタンが表示されます。"],
@@ -325,19 +325,19 @@ window.NOTICE = {
             ["一覧", "装着中のペットには装着しているキャラクターの顔が表示され、フィルターで等級別に見ることができます。"],
             ["装着・解除", "選んだペットを今のキャラクターに装着、または解除します。他のキャラクターが装着中のペットはトレーニングのみできます。"] ] },
           {"type": "facts", "label": "ペットハウス拡張", "photo": "house_expand", "marks": [[20.3, 21.0], [55.0, 21.0], null, null], "items": [["所持数・枠数", "画面上部のCURRENT PETに所持ペット数と枠数が表示されます。ペットハウスは基本200枠です。"], ["拡張ボタン", "PET HOUSE EXPANSIONボタンに次の拡張で増える枠数（20枠）と費用が表示されます。押すと確認画面が表示され、拡張すると20枠増えます（例：60/200 → 60/220）。"], ["費用", "1～5段階 20ポイント・6～10段階 30ポイント・11～15段階 40ポイント"], ["最大", "15段階まで拡張して最大500枠"]]},
-          { type: "facts", label: "お別れ — ペットの売却", photo: "dismiss_btn", marks: [[27.1, 87.3], null, [36.4, 87.3], null], items: [
+          { type: "facts", label: "お別れ — ペットの売却", photo: "dismiss_btn", marks: [[27.1, 89.3], null, [36.4, 89.3], null], items: [
             ["お別れボタン", "下部のお別れボタンで、選んだペットを売却できます。"],
             ["獲得コイン", "売却するとコインを獲得できます。獲得できるコインはペットの等級によって異なり（ブロンズ100・シルバー300・ゴールド1,500・プラチナ10,000コイン）、売却時に表示されるポップアップでも確認できます。"],
             ["すべて選択", "すべて選択で複数のペットをまとめて売却できます。"],
             ["売却できないペット", "装着中またはロック中のペットは売却できず、売却したペットは再び使えません。"] ] },
-          { type: "facts", label: "ロック — 大切なペットを守る", photo: "lock", marks: [[12.4, 87.9], [37.6, 32.0]], items: [
+          { type: "facts", label: "ロック — 大切なペットを守る", photo: "lock", marks: [[12.4, 87.9], [32.0, 27.5]], items: [
             ["ロックボタン", "下部のロックボタンで、選択中のペットをロック、またはロック解除できます。"],
             ["安全機能", "ロック機能は、ロックしたペットが一括売却されたり、育成の素材として消費されたり、合成の素材に含まれたりしないように守る安全機能です。ロックしたペットには鍵マークが付き、ロック中でも装着はできます。"] ] },
           { type: "facts", label: "ペットの育成 — トレーニングボタン", photo: "training_entry", marks: [[36.5, 64.4], [92.8, 63.8]],
             text: "ペットの育成は、ペットラインアップまたはペットハウスでトレーニングボタンを押して行えます。右下のトレーニングボタンを押すと、そのペットを育成できる画面に移動します。", items: [
             ["ペットラインアップから", "トレーニングを押すと、現在のキャラクターが装着しているペットを育成できます。"],
             ["ペットハウスから", "トレーニングを押すと、選んだペットを育成できます。装着していないペットも育成できます。"] ] },
-          { type: "facts", label: "トレーニング画面 — 他のペットを素材にしてレベルアップ", photo: "pet_detail", marks: [[19.4, 33.2], [65.4, 22.3], [18.0, 89.4], [70.2, 68.6], null, [83.1, 42.7], null],
+          { type: "facts", label: "トレーニング画面 — 他のペットを素材にしてレベルアップ", photo: "pet_detail", marks: [[18.6, 36.5], [65.4, 22.3], [18.0, 89.4], [70.2, 68.6], null, null, null],
             text: "トレーニングボタンを押すと表示される画面です。", items: [
             ["レベル・固有能力・サブ能力", "左側で順にレベル、固有能力、サブ能力を確認できます。レベルは育成するペットの現在のレベルです。"],
             ["素材一覧", "右側には、ペットの育成に素材として使えるペットが一覧で表示されます。右側でペットを選ぶとそのペットが素材に指定されます。ロック中のペットは選択できず、装着中のペットも素材にできません。"],
@@ -346,18 +346,18 @@ window.NOTICE = {
             ["素材の費用・経験値", "素材1体につき100コインがかかり、素材にしたペットの等級に応じて経験値（ブロンズ 10 · シルバー 20 · ゴールド 50 · プラチナ 200）を獲得します。"],
             ["育成したペットを素材に", "基本経験値に、そのペットに投入した経験値の3%が加算されます。"],
             ["最大レベル超過分", "最大レベルを超えた経験値は適用されません。"] ] },
-          { type: "facts", label: "登場サブ能力 — 等級別のサブ能力一覧", photo: "subs", marks: [[7.4, 24.4], [79.7, 27.0]],
+          { type: "facts", label: "登場サブ能力 — 等級別のサブ能力一覧", photo: "subs", marks: [[5.5, 24.4], [79.7, 27.0]],
             text: "育成画面で登場サブ能力ボタンを押すと、登場する可能性のあるすべてのサブ能力を確認できます。", items: [
             ["等級別の一覧", "このページでは、ペットの等級ごとに登場する可能性のあるサブ能力を確認できます。たとえばプラチナペットを育成中に下部の登場サブ能力ボタンを押すと、プラチナ等級で登場するサブ能力を確認できます。"],
             ["初期数値", "一覧の数値は初期数値です。初期数値は枠の解放時に適用され、強化すると数値が上昇します。"] ] },
-          { type: "facts", label: "ペット合成 — 同じ等級同士で上位等級に挑戦", photo: "combination", marks: [[21.8, 27.8], [67.0, 37.2], [80.9, 76.6], [65.6, 57.1], [27.1, 88.4]],
+          { type: "facts", label: "ペット合成 — 同じ等級同士で上位等級に挑戦", photo: "combination", marks: [[20.7, 34.6], [65.5, 33.0], [79.3, 76.6], [64.3, 57.1], [26.7, 88.9]],
             text: "ペット合成では、所持しているペットを合成して上位等級のペットの獲得に挑戦できます。", items: [
             ["同じ等級同士のみ", "合成は同じ等級のペット同士でのみ可能です。装着中のペットは一覧に表示されません。"],
             ["合成スロット", "合成するペットを選んだ後、最初に選んだペットと同じ等級のペットを合成スロットに入れます。"],
             ["必要な通貨", "スロットに入れると、右下で合成に必要な通貨を確認できます。"],
             ["出現確率", "材料をすべて入れると、結果として出る可能性のある等級と確率が表示されます。"],
             ["一括合成", "等級を選んでまとめて合成します。低い等級から順に進み、レベルの低いペットから使います。セット（コイン5体・ポイント2体）に満たないペットは残ります。一度に最大200体まで使用できます（コイン合成最大40回 · ポイント合成最大100回）。"] ] },
-          { type: "facts", label: "使用通貨の変更 — コイン・ポイント", photo: "combination_point", marks: [[86.7, 63.7], [72.1, 36.6], [82.4, 77.2]], items: [
+          { type: "facts", label: "使用通貨の変更 — コイン・ポイント", photo: "combination_point", marks: [[83.6, 65.8], [72.1, 36.6], [82.4, 77.2]], items: [
             ["使用通貨変更ボタン", "使用通貨変更ボタンで、合成に使う通貨を変更できます。通貨を変えても上位等級の確率は同じです。"],
             ["必要なペットの数", "ポイントで合成すると同じ等級のペットが2体だけで済みますが、コインで合成すると5体必要です。"],
             ["費用", "必要な体数とともに費用も変わります。等級別の費用は下の表でご確認いただけます。"] ] },
