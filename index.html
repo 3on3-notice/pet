@@ -121,11 +121,11 @@ html:lang(ko) body{word-break:keep-all}
 /* 번호 크기는 사진 폭에 비례(PC 880px 에서 26px) — 폰에서 캐릭터를 가리지 않게 최소 14px 까지 줄인다(10/28 피드백) */
 .ph{container-type:inline-size}
 .ph .pin{position:absolute;width:26px;height:26px;width:clamp(14px,2.95cqw,26px);height:clamp(14px,2.95cqw,26px);transform:translate(-50%,-50%);border-radius:50%;background:var(--or);color:#fff;font-size:13px;font-size:clamp(8.5px,1.48cqw,13px);font-weight:800;line-height:1;display:grid;place-items:center;box-shadow:0 0 0 2px #fff,0 2px 6px rgba(0,0,0,.45);pointer-events:none}
-@container (max-width:520px){.ph .pin{box-shadow:0 0 0 1.5px #fff,0 1px 3px rgba(0,0,0,.45)}}
 .ph .zoom{position:absolute;right:8px;bottom:8px;width:34px;height:34px;border:0;border-radius:50%;background:rgba(25,31,40,.72);color:#fff;display:grid;place-items:center;cursor:zoom-in}
 .ph .zoom svg{width:18px;height:18px}
 .ph img{cursor:zoom-in}
 .ph .zoom:hover{background:rgba(25,31,40,.9)}
+@container (max-width:520px){.ph .pin{box-shadow:0 0 0 1.5px #fff,0 1px 3px rgba(0,0,0,.45)}.ph .zoom{width:26px;height:26px;right:6px;bottom:6px}.ph .zoom svg{width:14px;height:14px}}   /* 폰에선 돋보기도 작게(사진 가림 줄이기) */
 .pnum{display:inline-grid;place-items:center;flex:none;width:20px;height:20px;margin-right:6px;border-radius:50%;background:var(--or);color:#fff;font-size:11.5px;font-weight:800;vertical-align:1px}
 .facts.pn>div{grid-template-columns:144px minmax(0,1fr)}
 /* 번호는 항목 이름 뒤에 작게: '화면 구성 ①' (10/28 피드백) */
@@ -479,6 +479,7 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
   .cmp .new .tag{background:#FFEFE6;color:var(--or-d)}
   .menu{grid-template-columns:minmax(0,1fr)}
   .facts>div{grid-template-columns:84px minmax(0,1fr);gap:10px}
+  .facts.pn>div{grid-template-columns:100px minmax(0,1fr)}   /* 번호 붙은 항목도 폰에선 좁게 — PC 144px 가 폰까지 와서 설명 칸이 반으로 줄던 것(10/29 검수) */
   .bars li{grid-template-columns:72px minmax(0,1fr) 40px;gap:4px 8px}
   .bars .nt{grid-column:2/-1;margin-top:-2px}
   .bars .nt:empty{display:none}
