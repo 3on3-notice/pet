@@ -308,9 +308,10 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
 .ev .chips li{font-size:12px;padding:3px 10px}
 .ev .note{font-size:12px;margin-top:8px}
 @media (min-width:760px){
-  .ev:has(.ev-img){display:grid;grid-template-columns:300px minmax(0,1fr);align-items:start}
-  .ev-img{border-bottom:0;border-right:1px solid var(--line);align-self:stretch}
-  .ev-img img{height:100%;object-fit:cover;object-position:left center}
+  /* 배너는 원래 비율 그대로(잘라내지 않음) 왼쪽 칸 위에 붙인다 */
+  .ev:has(.ev-img){display:grid;grid-template-columns:360px minmax(0,1fr);align-items:start}
+  .ev-img{border-bottom:0;background:none;padding:14px 0 14px 14px}
+  .ev-img img{width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
 }
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chips li{font-size:13px;color:var(--t2);background:var(--line2);border-radius:999px;padding:5px 12px}
