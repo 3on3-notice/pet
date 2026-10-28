@@ -48,8 +48,8 @@ window.NOTICE = {
             ["다른 캐릭터의 펫", "다른 캐릭터가 장착 중인 펫은 장착할 수 없습니다."] ] },
           { type: "bars", label: "펫 입양 — 신규 펫 뽑기", photo: "adopt",
             text: "펫 입양은 신규 펫을 뽑을 수 있는 영역입니다. 1회 뽑기와 10회 뽑기가 존재하며, 10회 뽑기는 포인트와 코인 중 하나를 선택해 뽑을 수 있습니다(코인 1회 2,000 · 10회 20,000 / 포인트 10회 10 포인트). 골드 펫 뽑기 티켓(1회 1장 · 10회 10장)으로도 입양할 수 있습니다.<br>펫 입양에서는 확률에 따라 브론즈/실버/골드 펫을 획득할 수 있습니다. 코인 · 포인트 · 티켓 어느 것으로 뽑아도 확률은 같고, 같은 등급의 펫은 모두 같은 확률로 나옵니다. 결과는 바로 표시되며, 아래 버튼으로 확률 페이지를 볼 수 있습니다.",
-            items: [["브론즈", 70, "6종"], ["실버", 25, "4종"], ["골드", 5, "15종"], ["플래티넘", 0, "입양에서는 나오지 않으며, 펫 조합으로 획득"]],
-            note: "펫 입양 위치: 캐릭터 › 펫 › 펫 입양. 기존 실버 · 골드 · 플래티넘 켄넬은 종료되었습니다." },
+            items: [["브론즈", 70, "6종"], ["실버", 25, "4종"], ["골드", 5, "15종"], ["플래티넘", 0, ""]],
+            note: ["펫 입양 위치: 캐릭터 › 펫 › 펫 입양. 기존 실버 · 골드 · 플래티넘 켄넬은 종료되었습니다.", "플래티넘 펫은 입양에서 나오지 않으며, 펫 조합으로 획득할 수 있습니다."] },
           { type: "facts", label: "펫 하우스 — 보유한 펫 관리", photo: "house", marks: [[22.3, 27.8], null],
             text: "펫 하우스는 현재 보유한 모든 펫을 확인할 수 있는 영역입니다.", items: [
             ["목록", "장착 중인 펫에는 장착한 캐릭터 얼굴이 표시되고, 필터로 등급별로 볼 수 있습니다."],
@@ -183,8 +183,8 @@ window.NOTICE = {
             ["Other Characters' Pets", "Pets equipped by another character can't be equipped."] ] },
           { type: "bars", label: "Adopt Pet — Get New Pets", photo: "adopt",
             text: "ADOPT PET is where you can get new pets. You can adopt 1 or 10 times, and for 10 adoptions you can choose to pay with either Points or Coins (Coins: 2,000 for 1 · 20,000 for 10 / Points: 10 Points for 10). You can also adopt with Gold Pet Adoption Tickets (1 Ticket per adoption · 10 Tickets for 10 adoptions).<br>Adoption gives Bronze, Silver or Gold pets based on the rates. The rates are the same whether you use Coins, Points or Tickets, and all pets within the same grade have an equal chance. Results are shown right away, and the button at the bottom opens the probability page.",
-            items: [["Bronze", 70, "6 types"], ["Silver", 25, "4 types"], ["Gold", 5, "15 types"], ["Platinum", 0, "Not available from Adoption; obtained through Pet Combination"]],
-            note: "Where to adopt: Characters › Pet › Adopt Pet. The previous Silver · Gold · Platinum Kennels have ended." },
+            items: [["Bronze", 70, "6 types"], ["Silver", 25, "4 types"], ["Gold", 5, "15 types"], ["Platinum", 0, ""]],
+            note: ["Where to adopt: Characters › Pet › Adopt Pet. The previous Silver · Gold · Platinum Kennels have ended.", "Platinum pets are not available from Adoption and can be obtained through Pet Combination."] },
           { type: "facts", label: "Pet House — Manage Your Pets", photo: "house", marks: [[22.3, 27.8], null],
             text: "PET HOUSE is where you can view all the pets you currently own.", items: [
             ["List", "Equipped pets show the face of the character using them, and you can filter by grade."],
@@ -318,8 +318,8 @@ window.NOTICE = {
             ["他のキャラクターのペット", "他のキャラクターが装着中のペットは装着できません。"] ] },
           { type: "bars", label: "ペット養子縁組 — 新しいペットを引く", photo: "adopt",
             text: "ペット養子縁組は、新しいペットを引くことができる場所です。1回引きと10回引きがあり、10回引きはポイントとコインのどちらかを選んで引けます（コイン1回 2,000 · 10回 20,000 / ポイント10回 10ポイント）。ゴールドペット養子縁組チケット（1回1枚 · 10回10枚）でも養子縁組できます。<br>ペット養子縁組では、確率に応じてブロンズ/シルバー/ゴールドのペットを獲得できます。コイン・ポイント・チケットのどれで引いても確率は同じで、同じ等級のペットはすべて同じ確率で登場します。結果はすぐに表示され、下のボタンから確率ページを確認できます。",
-            items: [["ブロンズ", 70, "6種"], ["シルバー", 25, "4種"], ["ゴールド", 5, "15種"], ["プラチナ", 0, "養子縁組では登場せず、ペット合成で入手"]],
-            note: "ペット養子縁組の場所：キャラクター › ペット › ペット養子縁組。以前のシルバー・ゴールド・プラチナケンネルは終了しました。" },
+            items: [["ブロンズ", 70, "6種"], ["シルバー", 25, "4種"], ["ゴールド", 5, "15種"], ["プラチナ", 0, ""]],
+            note: ["ペット養子縁組の場所：キャラクター › ペット › ペット養子縁組。以前のシルバー・ゴールド・プラチナケンネルは終了しました。", "プラチナペットは養子縁組では登場せず、ペット合成で入手できます。"] },
           { type: "facts", label: "ペットハウス — 所持ペットの管理", photo: "house", marks: [[22.3, 27.8], null],
             text: "ペットハウスは、現在所持しているすべてのペットを確認できる場所です。", items: [
             ["一覧", "装着中のペットには装着しているキャラクターの顔が表示され、フィルターで等級別に見ることができます。"],
