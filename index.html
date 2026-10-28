@@ -401,6 +401,15 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
 .lvb.go .fill{width:100%}
 .lvb.go em{left:100%}
 .lvv .r strong{transition:color .3s 1.2s}
+/* 레벨 슬라이더 */
+.lvs{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+.lvs-h{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--t3);margin-bottom:6px}
+.lvs-h b{font-size:15px;color:var(--t1);font-variant-numeric:tabular-nums}
+.lvs-h strong{font-size:20px;font-weight:800;color:var(--gd);font-variant-numeric:tabular-nums}
+.lvr{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--g) var(--p,0%),var(--line2) var(--p,0%));outline:none;cursor:pointer;margin:6px 0 2px}
+.lvr::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--g);box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.lvr::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--g)}
+.lvr:focus-visible{box-shadow:0 0 0 3px var(--gb)}
 @media (prefers-reduced-motion:reduce){.lvb .fill,.lvb em{transition:none}}
 .info{width:100%;border-collapse:collapse;font-size:14px;border-top:1px solid var(--t1)}
 .info th,.info td{padding:11px 0;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
@@ -841,7 +850,10 @@ function fillPet() {
     `<div class="pv-top"><div class="pv-ic">${iconHTML(p)}</div><div><span class="gbadge"><i></i>${esc(u.grade[p.grade] || p.grade || "")}</span><h2 id="dlgT">${esc(shown)}</h2>${alts.length ? `<p class="alt">${alts.join(" · ")}</p>` : ""}</div></div>` +
     `<section class="pv-sec"><h3>${u.unique}</h3><div class="abox"><b>${esc(abil(p))}</b>` +
       `<div class="lvv"><span>Lv.1<strong>${esc(p.lv1 == null ? "–" : p.lv1)}</strong></span><span class="ar" aria-hidden="true">→</span><span class="r">Lv.${g.max} · ${u.maxLv}<strong>${esc(p.max == null ? "–" : p.max)}</strong></span></div>` +
-      `<div class="lvb${SHOT ? " go" : ""}" aria-hidden="true" style="--from:${ratio != null ? ratio.toFixed(1) : 100}%"><i class="fill"></i>${ratio != null ? "<em></em>" : ""}</div></div></section>` +
+      (Array.isArray(p.lvs) && p.lvs.length > 1
+        // 레벨 슬라이더: 끌면 그 레벨의 고유 능력 값(pets.js lvs, 라이브 STATIC 레벨별 값). 열릴 때 Lv.1 → 만렙으로 차오른다
+        ? `<div class="lvs"><div class="lvs-h"><span>Lv.<b class="lvN">${SHOT ? p.lvs.length : 1}</b></span><strong class="lvV">${esc(SHOT ? p.lvs[p.lvs.length - 1] : p.lvs[0])}</strong></div><input type="range" class="lvr" min="1" max="${p.lvs.length}" step="1" value="${SHOT ? p.lvs.length : 1}" aria-label="Lv" style="--p:${SHOT ? 100 : 0}%"></div></div></section>`
+        : `<div class="lvb${SHOT ? " go" : ""}" aria-hidden="true" style="--from:${ratio != null ? ratio.toFixed(1) : 100}%"><i class="fill"></i>${ratio != null ? "<em></em>" : ""}</div></div></section>`) +
     `<section class="pv-sec"><h3>${u.info}</h3><table class="info"><tbody>` +
       `<tr><th scope="row">${u.gradeL}</th><td><i class="gdot"></i>${esc(u.grade[p.grade] || p.grade || "")}</td></tr>` +
       `<tr><th scope="row">${u.maxLv}</th><td>Lv.${g.max}</td></tr>` +
@@ -858,7 +870,19 @@ function fillPet() {
   dlgB.scrollTop = 0;
   const bar = dlgB.querySelector(".lvb");   // 그린 다음 프레임에 차오르기 시작
   if (bar && !SHOT) { void bar.offsetWidth; setTimeout(() => bar.classList.add("go"), 30); }   // 강제 리플로 후 클래스 → 전환이 시작점부터 그려진다
+  const r = dlgB.querySelector(".lvr");
+  if (r) {
+    const p = PETS[CUR], n = p.lvs.length, lvN = dlgB.querySelector(".lvN"), lvV = dlgB.querySelector(".lvV");
+    const show = l => { r.value = l; lvN.textContent = l; lvV.textContent = p.lvs[l - 1]; r.style.setProperty("--p", ((l - 1) / (n - 1) * 100) + "%"); };
+    r.addEventListener("input", () => { clearInterval(lvTimer); show(+r.value); });
+    clearInterval(lvTimer);
+    if (!SHOT && !matchMedia("(prefers-reduced-motion: reduce)").matches) {   // Lv.1 → 만렙 차오르기
+      let l = 1; show(1);
+      lvTimer = setInterval(() => { l++; show(l); if (l >= n) clearInterval(lvTimer); }, Math.max(45, Math.round(900 / n)));
+    } else show(n);
+  }
 }
+let lvTimer = 0;
 function setPetParam(name) {
   const p = new URLSearchParams(location.search);
   if (name) p.set("pet", name); else p.delete("pet");
@@ -913,6 +937,7 @@ ov.addEventListener("click", e => { if (e.target === ov && downOnOv) closePet();
 document.addEventListener("keydown", e => {
   if (ov.hidden) return;
   if (e.key === "Escape") { e.preventDefault(); closePet(); }
+  else if (e.target.classList && e.target.classList.contains("lvr")) return;   // 레벨 슬라이더의 ←/→ 는 레벨 이동
   else if (e.key === "ArrowLeft") { e.preventDefault(); stepPet(-1); }
   else if (e.key === "ArrowRight") { e.preventDefault(); stepPet(1); }
   else if (e.key === "Tab") trapTab(e);
@@ -995,7 +1020,7 @@ function render() {
   $("#side").hidden = true;   // 안내서라 '확인된 이슈' 칸은 쓰지 않는다 (10/28 사용자 지시)
   $("#main").innerHTML = ch.map(c =>
     `<section class="ch" id="${esc(c.id)}" aria-labelledby="h-${esc(c.id)}"><div class="ch-h"><h2 id="h-${esc(c.id)}">${c.title || ""}</h2>${c.q ? `<p>${c.q}</p>` : ""}</div>${(c.blocks || []).map(b => block(b, t)).join("")}</section>`).join("") +
-    `<footer class="foot">${t.foot ? `<p>${t.foot}</p>` : ""}${N.updated ? `<p class="upd">Updated ${esc(N.updated)}</p>` : ""}</footer>`;
+    `<footer class="foot"><p>© JOYCITY · 3on3 FreeStyle</p></footer>`;   // 인사말·날짜 없이 제작사만 (10/28 사용자 지시)
   const q = $("#dxq");
   if (q) { q.value = Q; q.placeholder = u.search; q.setAttribute("aria-label", u.search); $("#dxc").setAttribute("aria-label", u.clear); }
   dlg.setAttribute("aria-label", u.dialog);
