@@ -54,12 +54,12 @@ window.NOTICE = {
             text: "펫 하우스는 현재 보유한 모든 펫을 확인할 수 있는 영역입니다.", items: [
             ["목록", "장착 중인 펫에는 장착한 캐릭터 얼굴이 표시되고, 필터로 등급별로 볼 수 있습니다."],
             ["장착 · 해제", "선택한 펫을 지금 캐릭터에 장착하거나 해제합니다. 다른 캐릭터가 장착 중인 펫은 트레이닝만 할 수 있습니다."],
-            ["하우스 확장", "포인트로 펫 하우스 칸을 늘립니다. 한 번 확장할 때마다 20칸씩 늘어나며, 비용은 1~5단계 20 포인트 · 6~10단계 30 포인트 · 11~15단계 40 포인트입니다(최대 15단계). 다음 확장의 칸 수와 비용은 확장 버튼에 표시됩니다."] ] },
+            ["하우스 확장", "펫 하우스는 기본 200칸입니다. 포인트로 칸을 늘릴 수 있으며, 한 번 확장할 때마다 20칸씩 늘어 최대 500칸(15단계)까지 늘릴 수 있습니다. 비용은 1~5단계 20 포인트 · 6~10단계 30 포인트 · 11~15단계 40 포인트입니다. 다음 확장의 칸 수와 비용은 확장 버튼에 표시됩니다."] ] },
           { type: "facts", label: "이별하기 — 펫 판매", photo: "dismiss_btn", marks: [[27.1, 87.3], null, [36.4, 87.3], null], items: [
             ["이별하기 버튼", "하단의 이별하기 버튼으로 원하는 펫을 판매할 수 있습니다."],
             ["받는 코인", "판매 시 코인을 획득할 수 있습니다. 획득하는 코인은 펫 등급별로 다르며(브론즈 100 · 실버 300 · 골드 1,500 · 플래티넘 10,000 코인), 판매 시 나타나는 팝업에서도 확인할 수 있습니다."],
             ["모두 선택", "모두 선택으로 여러 마리를 한 번에 판매할 수 있습니다."],
-            ["판매할 수 없는 펫", "장착 중인 펫은 판매할 수 없으며, 판매한 펫은 다시 쓸 수 없습니다."] ] },
+            ["판매할 수 없는 펫", "장착 중이거나 잠근 펫은 판매할 수 없으며, 판매한 펫은 다시 쓸 수 없습니다."] ] },
           { type: "facts", label: "잠금 — 아끼는 펫 보호", photo: "lock", marks: [[12.4, 87.9], [37.6, 32.0]], items: [
             ["잠금 버튼", "하단의 잠금 버튼으로 현재 선택한 펫을 잠그거나 잠금 해제할 수 있습니다."],
             ["안전장치", "잠금 기능은 잠긴 펫이 일괄 판매되거나, 성장 재료로 소모되거나, 조합 재료에 포함되지 않도록 막아 주는 안전장치입니다. 잠긴 펫에는 자물쇠 표시가 붙으며, 잠가도 장착은 할 수 있습니다."] ] },
@@ -189,12 +189,12 @@ window.NOTICE = {
             text: "PET HOUSE is where you can view all the pets you currently own.", items: [
             ["List", "Equipped pets show the face of the character using them, and you can filter by grade."],
             ["Equip · Unequip", "Equip the selected pet to the current character or unequip it. Pets equipped by another character can only use Training."],
-            ["Pet House Expansion", "Use Points to add slots to your Pet House. Each expansion adds 20 slots and costs 20 Points for levels 1–5, 30 Points for levels 6–10 and 40 Points for levels 11–15 (up to 15 levels). The number of slots and the cost of the next expansion are shown on the expansion button."] ] },
+            ["Pet House Expansion", "The Pet House starts with 200 slots. Use Points to add more: each expansion adds 20 slots, up to 500 slots (15 levels), and costs 20 Points for levels 1–5, 30 Points for levels 6–10 and 40 Points for levels 11–15. The number of slots and the cost of the next expansion are shown on the expansion button."] ] },
           { type: "facts", label: "Dismiss Pet — Sell Pets", photo: "dismiss_btn", marks: [[27.1, 87.3], null, [36.4, 87.3], null], items: [
             ["DISMISS PET Button", "Use the DISMISS PET button at the bottom to sell the pets you choose."],
             ["Coins Received", "You receive Coins when you sell a pet. The amount differs by pet grade (Bronze 100 · Silver 300 · Gold 1,500 · Platinum 10,000 Coins) and is also shown in the pop-up that appears when you sell."],
             ["SELECT ALL", "Use SELECT ALL to sell several pets at once."],
-            ["Pets You Can't Sell", "Equipped pets can't be sold, and pets you sell can't be used again."] ] },
+            ["Pets You Can't Sell", "Equipped or locked pets can't be sold, and pets you sell can't be used again."] ] },
           { type: "facts", label: "Lock — Protect Your Favorite Pets", photo: "lock", marks: [[12.4, 87.9], [37.6, 32.0]], items: [
             ["LOCK Button", "Use the LOCK button at the bottom to lock or unlock the selected pet."],
             ["Safety Feature", "Locking keeps a pet from being sold in bulk, used up as a growth material, or added as a combination material. Locked pets show a lock icon and can still be equipped."] ] },
@@ -324,12 +324,12 @@ window.NOTICE = {
             text: "ペットハウスは、現在所持しているすべてのペットを確認できる場所です。", items: [
             ["一覧", "装着中のペットには装着しているキャラクターの顔が表示され、フィルターで等級別に見ることができます。"],
             ["装着・解除", "選んだペットを今のキャラクターに装着、または解除します。他のキャラクターが装着中のペットはトレーニングのみできます。"],
-            ["ペットハウス拡張", "ポイントでペットハウスの枠を増やせます。1回の拡張ごとに20枠ずつ増え、費用は1～5段階が20ポイント・6～10段階が30ポイント・11～15段階が40ポイントです（最大15段階）。次の拡張の枠数と費用は拡張ボタンに表示されます。"] ] },
+            ["ペットハウス拡張", "ペットハウスは基本200枠です。ポイントで枠を増やせ、1回の拡張ごとに20枠ずつ、最大500枠（15段階）まで増やせます。費用は1～5段階が20ポイント・6～10段階が30ポイント・11～15段階が40ポイントです。次の拡張の枠数と費用は拡張ボタンに表示されます。"] ] },
           { type: "facts", label: "お別れ — ペットの売却", photo: "dismiss_btn", marks: [[27.1, 87.3], null, [36.4, 87.3], null], items: [
             ["お別れボタン", "下部のお別れボタンで、選んだペットを売却できます。"],
             ["獲得コイン", "売却するとコインを獲得できます。獲得できるコインはペットの等級によって異なり（ブロンズ100・シルバー300・ゴールド1,500・プラチナ10,000コイン）、売却時に表示されるポップアップでも確認できます。"],
             ["すべて選択", "すべて選択で複数のペットをまとめて売却できます。"],
-            ["売却できないペット", "装着中のペットは売却できず、売却したペットは再び使えません。"] ] },
+            ["売却できないペット", "装着中またはロック中のペットは売却できず、売却したペットは再び使えません。"] ] },
           { type: "facts", label: "ロック — 大切なペットを守る", photo: "lock", marks: [[12.4, 87.9], [37.6, 32.0]], items: [
             ["ロックボタン", "下部のロックボタンで、選択中のペットをロック、またはロック解除できます。"],
             ["安全機能", "ロック機能は、ロックしたペットが一括売却されたり、育成の素材として消費されたり、合成の素材に含まれたりしないように守る安全機能です。ロックしたペットには鍵マークが付き、ロック中でも装着はできます。"] ] },
