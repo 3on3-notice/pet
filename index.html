@@ -963,8 +963,10 @@ document.addEventListener("click", e => {
   if (lb && lb.dataset.l !== L && N[lb.dataset.l]) {
     L = lb.dataset.l;
     const p = new URLSearchParams(location.search); p.set("lang", L);
-    try { history.replaceState(history.state, "", location.pathname + "?" + p.toString() + location.hash); } catch (_) {}
+    // 언어를 바꾸면 맨 위에서 다시 시작한다 — 주소의 #단원 표시도 지운다(10/28 사용자 지시)
+    try { history.replaceState(history.state, "", location.pathname + "?" + p.toString()); } catch (_) {}
     render();
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }
 });
 document.addEventListener("input", e => { if (e.target.id === "dxq") { Q = e.target.value; renderDex(); } });
