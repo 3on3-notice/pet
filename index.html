@@ -54,7 +54,7 @@ summary::-webkit-details-marker{display:none}
 .gnb.more-l .in::before,.gnb.more-r .in::after{opacity:1}
 
 /* ── 본문 1단: 배너 → 확인된 이슈 → 단원 (오른쪽 칸 없음, 10/28 사용자 지시) ── */
-.layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"banner" "side" "main";gap:16px;align-items:start;padding-top:20px;padding-bottom:56px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"banner" "main";gap:16px;align-items:start;padding-top:20px;padding-bottom:56px}
 .banner{grid-area:banner}
 .side{grid-area:side}
 main{grid-area:main;min-width:0}
@@ -433,7 +433,7 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
   .logo{font-size:17px}.logo svg{width:24px;height:24px}
   .tabs{margin:0 -16px;padding:0 6px}
   .tabs a{font-size:14.5px}
-  .layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"banner" "side" "main";gap:12px;padding-top:12px;padding-bottom:40px}
+  .layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"banner" "main";gap:12px;padding-top:12px;padding-bottom:40px}
   .side{position:static}
   .banner{height:auto;min-height:0}
   .banner::before{background:linear-gradient(180deg,rgba(255,255,255,.7) 0%,rgba(255,255,255,.3) 55%,rgba(255,255,255,0) 75%)}
@@ -991,7 +991,7 @@ function render() {
   const ch = Array.isArray(t.chapters) ? t.chapters : [];
   $("#gnb").setAttribute("aria-label", u.tabs);
   $("#tabs").innerHTML = ch.map(c => `<a href="#${esc(c.id)}" data-id="${esc(c.id)}">${c.nav || c.title || ""}</a>`).join("");
-  $("#side").innerHTML = issuesHTML(t);
+  $("#side").hidden = true;   // 안내서라 '확인된 이슈' 칸은 쓰지 않는다 (10/28 사용자 지시)
   $("#main").innerHTML = ch.map(c =>
     `<section class="ch" id="${esc(c.id)}" aria-labelledby="h-${esc(c.id)}"><div class="ch-h"><h2 id="h-${esc(c.id)}">${c.title || ""}</h2>${c.q ? `<p>${c.q}</p>` : ""}</div>${(c.blocks || []).map(b => block(b, t)).join("")}</section>`).join("") +
     `<footer class="foot">${t.foot ? `<p>${t.foot}</p>` : ""}${N.updated ? `<p class="upd">Updated ${esc(N.updated)}</p>` : ""}</footer>`;

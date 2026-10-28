@@ -6,9 +6,7 @@ window.NOTICE = {
     ended: "종료", foot: "앞으로도 이용자분들께서 불편을 겪지 않도록 최선을 다하겠습니다. 감사합니다.",
     st: { checking: "확인 중", planned: "수정 예정", fixed: "수정 완료" }, dl: { found: "확인일", fixed: "수정일" },
     issuesLabel: "확인된 이슈", issuesEmpty: "현재 확인된 이슈가 없습니다.",
-    issues: [
-      { status: "planned", date: "10/28", title: "커리어 모드 펫 이미지 미노출",
-        text: "게임 - 커리어 모드 - 펫 라인업에서 장착한 펫의 이미지가 보이지 않습니다. 펫 기능과 효과는 정상 적용되며, 장착한 펫은 펫 라인업 화면 오른쪽 텍스트로 확인하실 수 있습니다. 차주 점검 시 수정될 예정입니다." } ],
+    issues: [],
     ui: {
       search: "펫 이름·능력 검색", all: "전체", unit: "종",
       grade: { P: "플래티넘", G: "골드", S: "실버", B: "브론즈" },
@@ -125,9 +123,7 @@ window.NOTICE = {
     ended: "Ended", foot: "Thank you.",
     st: { checking: "Investigating", planned: "Fix Scheduled", fixed: "Fixed" }, dl: { found: "Reported", fixed: "Fixed on" },
     issuesLabel: "Known Issues", issuesEmpty: "There are no known issues at this time.",
-    issues: [
-      { status: "planned", date: "10/28", title: "Pet Image Display Issue in Career Mode",
-        text: "We have found an issue where the image of your equipped pet is not displayed in Game > Career Mode > Pet Lineup. Pets can be used in Career Mode, and their effects are applied normally. You can check which pet you have equipped in the text on the right side of the Pet Lineup screen. This issue will be fixed during next week's maintenance." } ],
+    issues: [],
     ui: {
       search: "Search by pet name or ability", all: "All", unit: " types",
       grade: { P: "Platinum", G: "Gold", S: "Silver", B: "Bronze" },
@@ -244,9 +240,7 @@ window.NOTICE = {
     ended: "終了", foot: "ありがとうございます。",
     st: { checking: "確認中", planned: "修正予定", fixed: "修正済み" }, dl: { found: "確認日", fixed: "修正日" },
     issuesLabel: "確認されている不具合", issuesEmpty: "現在確認されている不具合はありません。",
-    issues: [
-      { status: "planned", date: "10/28", title: "キャリアモードのペット画像非表示",
-        text: "ゲーム - キャリアモード - ペットラインアップにて、装着中のペットの画像が表示されない現象が確認されました。キャリアモードでのペット機能はご利用いただけ、ペットの効果も正常に適用されます。装着中のペットは、ペットラインアップ画面右側のテキストでご確認いただけます。本現象は次回の定期メンテナンスにて修正される予定です。" } ],
+    issues: [],
     ui: {
       search: "ペット名・能力で検索", all: "すべて", unit: "種",
       grade: { P: "プラチナ", G: "ゴールド", S: "シルバー", B: "ブロンズ" },
