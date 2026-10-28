@@ -19,7 +19,7 @@ window.PETS = [
   {"kr": "블루 메신저봇", "en": "Blue Messenger", "jp": "ブルーメッセンジャーボット", "grade": "P", "ability": {"kr": "간접 공격수 돌파 모션 빠르기", "en": "V-Cut Speed", "jp": "間接攻撃手突破の速度"}, "lv1": "0.6%", "max": "9%"},
   {"kr": "핑크 메신저봇", "en": "Pink Messenger", "jp": "ピンクメッセンジャーボット", "grade": "P", "ability": {"kr": "사이드 홉 스텝 모션 빠르기", "en": "Side Hop Step Speed", "jp": "サイドホップステップの速度"}, "lv1": "0.6%", "max": "9%"},
   {"kr": "카키 메신저봇", "en": "Khaki Messenger", "jp": "カーキメッセンジャーボット", "grade": "P", "ability": {"kr": "백 드리블 모션 빠르기", "en": "Behind the Back Speed", "jp": "バックドリブルの速度増加"}, "lv1": "0.7%", "max": "10.5%"},
-  {"kr": "갓 을 쓴 까치", "en": "Magpie with gat", "jp": "gatをかぶったカササギ", "grade": "P", "ability": {"kr": "어퍼 스틸 성공률", "en": "Upper Steal Success rate", "jp": "アッパースティールの成功率"}, "lv1": "0.8%", "max": "12%"},
+  {"kr": "갓을 쓴 까치", "en": "Magpie with gat", "jp": "gatをかぶったカササギ", "grade": "P", "ability": {"kr": "어퍼 스틸 성공률", "en": "Upper Steal Success rate", "jp": "アッパースティールの成功率"}, "lv1": "0.8%", "max": "12%"},
   {"kr": "헬하운드", "en": "Hellhound", "jp": "ヘルハウンド", "grade": "P", "ability": {"kr": "디나이 인터셉트 성공률", "en": "Deny Intercept Success Rate", "jp": "ディナイインターセプトの成功率"}, "lv1": "0.4%", "max": "6%"},
   {"kr": "캐로봇", "en": "CarroBot", "jp": null, "grade": "P", "ability": {"kr": "퀵 점퍼 성공률", "en": "Quick Jumper Success Rate", "jp": "クィックジャンパーの成功率"}, "lv1": "0.1%", "max": "2%"},
   {"kr": "빅맨 코치 모노클", "en": "Big Man Monocle", "jp": null, "grade": "P", "ability": {"kr": "파워 리바운드 가능 거리", "en": "Power Rebound Distance", "jp": "パワーリバウンドの可能距離"}, "lv1": "1.5CM", "max": "20CM"},
