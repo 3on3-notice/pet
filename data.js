@@ -10,7 +10,7 @@ window.NOTICE = {
     ui: {
       search: "펫 이름·능력 검색", all: "전체", unit: "종",
       grade: { P: "플래티넘", G: "골드", S: "실버", B: "브론즈" },
-      unique: "고유 능력", maxLv: "만렙", sub: "서브 능력", subUp: "서브 강화", feedExp: "먹이 경험치", how: "얻는 방법",
+      unique: "고유 능력", maxLv: "만렙", sub: "서브 능력", subUp: "서브 강화", feedExp: "재료 경험치", how: "얻는 방법",
       subsCan: "이 등급에 붙을 수 있는 서브 능력 {n}종 · 초기 수치", prev: "이전", next: "다음", close: "닫기", none: "없음", photo: "사진 준비 중", issues: "확인된 이슈",
       gradeInfo: {
         P: { sub: "3칸 (Lv.3 · 6 · 9 해금)", up: "Lv.12 · 15", how: "<b>골드 펫 조합</b>에 성공(25%)하면 얻을 수 있습니다." },
@@ -126,7 +126,7 @@ window.NOTICE = {
           { type: "faq", items: [
             ["기존에 갖고 있던 펫은 없어지나요? 능력은 그대로인가요?", "없어지지 않습니다. 기존 펫은 <b>등급과 외형이 그대로 유지</b>되고, 해당 등급의 <b>최대 레벨</b>이 됩니다. 자세한 내용은 '기존 펫 처리'에서 확인해 주세요."],
             ["서브 능력은 어떻게 정해지나요? 레벨을 올리면 오르나요?", "서브 능력은 <b>펫을 얻는 순간 칸 수만큼 정해지고</b>, 해금 레벨에 도달하면 공개되어 적용됩니다. 칸 수는 실버 1칸 · 골드 2칸 · 플래티넘 3칸이며 브론즈는 없습니다. 해금은 실버 Lv.3, 골드 Lv.3 · 6, 플래티넘 Lv.3 · 6 · 9입니다. <b>골드 Lv.9 · 플래티넘 Lv.12 · 15</b>에서는 열린 서브 능력 중 1개가 무작위로 강화됩니다(플래티넘은 같은 능력이 두 번 강화될 수도 있습니다). 한 펫에 같은 서브 능력은 두 번 붙지 않습니다."],
-            ["고유 능력은 펫마다 정해져 있나요? 펫 레벨은 어떻게 올리나요?", "네, 고유 능력은 <b>펫마다 정해진 1개</b>이며 레벨이 오를 때마다 함께 오릅니다. 펫별 Lv.1 · 만렙 수치는 펫 도감에서 확인하실 수 있습니다. 레벨은 <b>다른 펫을 먹이로 주어</b> 올립니다. 먹이 1마리당 100 코인이 들고, 먹이 등급에 따라 경험치 10(브론즈) · 20(실버) · 50(골드) · 200(플래티넘)을 얻습니다. 만렙은 브론즈 Lv.3 · 실버 Lv.6 · 골드 Lv.12 · 플래티넘 Lv.15이며, 장착 중이거나 잠금한 펫은 먹이로 쓸 수 없습니다."],
+            ["고유 능력은 펫마다 정해져 있나요? 펫 레벨은 어떻게 올리나요?", "네, 고유 능력은 <b>펫마다 정해진 1개</b>이며 레벨이 오를 때마다 함께 오릅니다. 펫별 Lv.1 · 만렙 수치는 펫 도감에서 확인하실 수 있습니다. 레벨은 <b>다른 펫을 재료로 사용해</b> 올립니다. 재료 1마리당 100 코인이 들고, 재료 등급에 따라 경험치 10(브론즈) · 20(실버) · 50(골드) · 200(플래티넘)을 얻습니다. 만렙은 브론즈 Lv.3 · 실버 Lv.6 · 골드 Lv.12 · 플래티넘 Lv.15이며, 장착 중이거나 잠금한 펫은 재료로 쓸 수 없습니다."],
             ["업데이트 후 펫이 안 보여요. 어디서 장착하나요?", "기존 펫을 새 펫 시스템에 맞게 바꾸는 과정에서 <b>모든 펫의 장착이 해제</b>되었습니다. 펫은 그대로 있으니 <b>캐릭터 › 캐릭터 선택 › 펫 › 펫 라인업</b>에서 펫 선택하기를 눌러 다시 장착하시면 됩니다."],
             ["새 펫에는 3점 슛 성공률 능력이 없나요?", "고유 능력에는 3점 슛 성공률이 없지만, <b>서브 능력</b>으로는 실버 이상 어떤 펫이든 받을 수 있습니다. 서브 능력은 펫 등급에 따라 무작위로 붙는 범위가 다르며, 등급이 높을수록 인기 능력 위주로 나옵니다."],
             ["플래티넘 펫은 어떻게 얻나요?", "플래티넘 펫은 <b>펫 조합</b>으로 얻습니다. <b>골드 펫끼리 조합</b>하면 <b>25%</b> 확률로 플래티넘 펫을 얻고, 실패하면 무작위 골드 펫이 나옵니다. 골드 조합은 코인 조합 5마리 + 10,000 코인, 포인트 조합 2마리 + 10 포인트입니다. 재료로 쓴 펫은 모두 사라지고 새 펫 1마리가 Lv.1로 나오며, 장착 중이거나 잠금한 펫은 재료로 쓰이지 않습니다."],
@@ -145,7 +145,7 @@ window.NOTICE = {
     ui: {
       search: "Search by pet name or ability", all: "All", unit: " types",
       grade: { P: "Platinum", G: "Gold", S: "Silver", B: "Bronze" },
-      unique: "Unique Ability", maxLv: "Max Level", sub: "Sub Ability", subUp: "Sub Ability Upgrade", feedExp: "EXP as Feed", how: "How to Get",
+      unique: "Unique Ability", maxLv: "Max Level", sub: "Sub Ability", subUp: "Sub Ability Upgrade", feedExp: "EXP as Material", how: "How to Get",
       subsCan: "Sub Abilities this grade can get ({n}) · Initial Value", prev: "Previous", next: "Next", close: "Close", none: "None", photo: "Image coming soon", issues: "Known Issues",
       gradeInfo: {
         P: { sub: "3 slots (unlocked at Lv.3 · 6 · 9)", up: "Lv.12 · 15", how: "You can get one by succeeding at a <b>Gold pet Combination</b> (25%)." },
@@ -261,7 +261,7 @@ window.NOTICE = {
           { type: "faq", items: [
             ["Will my existing pets disappear? Do they keep their abilities?", "No, they will not disappear. Your existing pets <b>keep their grade and appearance</b>, become the <b>max level</b> of their grade. See 'Existing Pets' for details."],
             ["How are Sub Abilities decided? Do they increase when my pet levels up?", "Sub Abilities are <b>decided the moment you obtain a pet</b>, one for each slot, and each one is revealed and applied when its slot unlocks. Silver pets have 1 slot, Gold pets 2 and Platinum pets 3 (Bronze pets have none). Slots unlock at Lv.3 for Silver, Lv.3 · 6 for Gold and Lv.3 · 6 · 9 for Platinum. At <b>Gold Lv.9 and Platinum Lv.12 · 15</b>, one unlocked Sub Ability is upgraded at random (on Platinum pets, the same one can be upgraded twice). The same Sub Ability never appears twice on one pet."],
-            ["Is each pet's Unique Ability fixed? How do I level up my pets?", "Yes. Each pet has <b>1 fixed Unique Ability</b>, and its value increases with every level. You can check each pet's Lv.1 and max level values in the pet list on this page. To level up a pet, <b>use other pets as feed</b>. Each feed pet costs 100 Coins and gives 10 (Bronze), 20 (Silver), 50 (Gold) or 200 (Platinum) EXP. Max level is Lv.3 for Bronze, Lv.6 for Silver, Lv.12 for Gold and Lv.15 for Platinum. Equipped or locked pets cannot be used as feed."],
+            ["Is each pet's Unique Ability fixed? How do I level up my pets?", "Yes. Each pet has <b>1 fixed Unique Ability</b>, and its value increases with every level. You can check each pet's Lv.1 and max level values in the pet list on this page. To level up a pet, <b>use other pets as materials</b>. Each material pet costs 100 Coins and gives 10 (Bronze), 20 (Silver), 50 (Gold) or 200 (Platinum) EXP. Max level is Lv.3 for Bronze, Lv.6 for Silver, Lv.12 for Gold and Lv.15 for Platinum. Equipped or locked pets cannot be used as materials."],
             ["I can't see my pets after the update. Where do I equip them?", "While existing pets were converted to the new Pet System, <b>all pets were unequipped</b>. Your pets are still there — go to <b>[Characters] - [Select Character] - [Pet] - PET LINEUP</b> and select a pet to equip it again."],
             ["Do new pets have a 3 Point Shot Success Rate ability?", "3 Point Shot Success Rate is not among the Unique Abilities, but any pet of Silver grade or higher can get it as a <b>Sub Ability</b>. Sub Abilities are assigned at random from a range that depends on the pet's grade, and higher grades draw mainly from the most popular abilities."],
             ["How do I get Platinum pets?", "Platinum pets are obtained through <b>Pet Combination</b>. <b>Combine Gold pets</b> for a <b>25%</b> chance to get a Platinum pet; otherwise, you get a random Gold pet. Gold Combination costs 5 pets + 10,000 Coins (Coin Combination) or 2 pets + 10 Points (Point Combination). All material pets are used up, and 1 new pet is obtained at Lv.1. Equipped or locked pets are not used as material."],
@@ -280,7 +280,7 @@ window.NOTICE = {
     ui: {
       search: "ペット名・能力で検索", all: "すべて", unit: "種",
       grade: { P: "プラチナ", G: "ゴールド", S: "シルバー", B: "ブロンズ" },
-      unique: "固有能力", maxLv: "最大レベル", sub: "サブ能力", subUp: "サブ能力強化", feedExp: "エサ経験値", how: "入手方法",
+      unique: "固有能力", maxLv: "最大レベル", sub: "サブ能力", subUp: "サブ能力強化", feedExp: "素材経験値", how: "入手方法",
       subsCan: "この等級に付く可能性のあるサブ能力 {n}種・初期数値", prev: "前へ", next: "次へ", close: "閉じる", none: "なし", photo: "画像準備中", issues: "確認されている不具合",
       gradeInfo: {
         P: { sub: "3枠（Lv.3 · 6 · 9で解放）", up: "Lv.12 · 15", how: "<b>ゴールドペットの合成</b>に成功（25%）すると入手できます。" },
@@ -396,7 +396,7 @@ window.NOTICE = {
           { type: "faq", items: [
             ["今まで持っていたペットはなくなりますか？能力はそのままですか？", "なくなりません。既存のペットは<b>ランクと外見がそのまま維持</b>され、その等級の<b>最大レベル</b>になります。詳しくは「既存ペットの扱い」をご確認ください。"],
             ["サブ能力はどのように決まりますか？レベルを上げると上がりますか？", "サブ能力は<b>ペットを獲得した瞬間にスロット数だけ決まり</b>、解放レベルに達すると公開・適用されます。スロット数はシルバー1・ゴールド2・プラチナ3で、ブロンズにはありません。解放はシルバーLv.3、ゴールドLv.3・6、プラチナLv.3・6・9です。<b>ゴールドLv.9・プラチナLv.12・15</b>では、解放済みのサブ能力から1つがランダムに強化されます（プラチナは同じ能力が2回強化されることもあります）。1体のペットに同じサブ能力が2つ付くことはありません。"],
-            ["固有能力はペットごとに決まっていますか？ペットのレベルはどう上げますか？", "はい、固有能力は<b>ペットごとに決まった1つ</b>で、レベルが上がるたびに一緒に上がります。ペットごとのLv.1・最大レベルの数値はペット図鑑でご確認いただけます。レベルは<b>他のペットをエサとして与えて</b>上げます。エサ1体につき100コインがかかり、エサのランクに応じて経験値10（ブロンズ）・20（シルバー）・50（ゴールド）・200（プラチナ）を獲得します。最大レベルはブロンズLv.3・シルバーLv.6・ゴールドLv.12・プラチナLv.15で、装着中またはロック中のペットはエサにできません。"],
+            ["固有能力はペットごとに決まっていますか？ペットのレベルはどう上げますか？", "はい、固有能力は<b>ペットごとに決まった1つ</b>で、レベルが上がるたびに一緒に上がります。ペットごとのLv.1・最大レベルの数値はペット図鑑でご確認いただけます。レベルは<b>他のペットを素材にして</b>上げます。素材1体につき100コインがかかり、素材のランクに応じて経験値10（ブロンズ）・20（シルバー）・50（ゴールド）・200（プラチナ）を獲得します。最大レベルはブロンズLv.3・シルバーLv.6・ゴールドLv.12・プラチナLv.15で、装着中またはロック中のペットは素材にできません。"],
             ["アップデート後、ペットが見当たりません。どこで装着しますか？", "既存のペットを新しいペットシステムに合わせて変更する過程で、<b>すべてのペットの装着が解除</b>されました。ペットはそのまま残っていますので、<b>[キャラクター] - [キャラクター選択] - [ペット] - ペットラインアップ</b>で装着するペットを選んで再度装着してください。"],
             ["新しいペットには3点シュートの成功率の能力はありませんか？", "固有能力に「3点シュートの成功率上昇」はありませんが、<b>サブ能力</b>としてはシルバー以上のどのペットにも付く可能性があります。サブ能力は等級によってランダムに付く範囲が異なり、等級が高いほど人気の能力が中心になります。"],
             ["プラチナペットはどうやって入手しますか？", "プラチナペットは<b>ペット合成</b>で入手します。<b>ゴールドペット同士を合成</b>すると<b>25%</b>の確率でプラチナペットを獲得でき、失敗するとランダムなゴールドペットになります。ゴールドの合成はコイン合成が5体＋10,000コイン、ポイント合成が2体＋10ポイントです。素材にしたペットはすべてなくなり、新しいペット1体がLv.1で出ます。装着中またはロック中のペットは素材に使われません。"],
