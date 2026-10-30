@@ -133,6 +133,7 @@ html:lang(ko) body{word-break:keep-all}
 /* 크게 보기 */
 .lb{position:fixed;inset:0;z-index:60;background:rgba(10,14,20,.92);display:none;align-items:center;justify-content:center;padding:44px 12px 12px;cursor:zoom-out}
 .lb.on{display:flex}
+#lbB{width:100%;display:flex;justify-content:center}   /* 폭을 안 주면 .ph(container-type)의 내용 폭이 0으로 잡혀 사진이 안 보인다(10/29) */
 .lb .ph{width:min(100%,calc((100vh - 60px) * 16 / 9));aspect-ratio:16/9;border:0;background:#000;cursor:zoom-out}
 .lb .ph img{cursor:zoom-out}
 .lb .ph .pin{width:clamp(16px,2.95cqw,32px);height:clamp(16px,2.95cqw,32px);font-size:clamp(9.5px,1.48cqw,15px)}
