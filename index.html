@@ -33,6 +33,11 @@ summary::-webkit-details-marker{display:none}
 .hd .in{height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .logo{display:flex;align-items:center;gap:8px;font-size:19px;font-weight:800;letter-spacing:-.4px;text-decoration:none;color:var(--t1)}
 .logo svg{width:26px;height:26px;flex:none}
+.hr{display:flex;align-items:center;gap:6px}
+.home{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--t2,#444);text-decoration:none;padding:5px 11px;border:1px solid var(--line,#ddd);border-radius:999px;white-space:nowrap}
+.home:hover{color:var(--t1)}
+.home svg{width:14px;height:14px;flex:none}
+@media (max-width:420px){.home{padding:5px 9px}.home span{display:none}}
 .langs{display:flex;align-items:center}
 .langs button{position:relative;border:0;background:none;font-size:13px;color:var(--t3);padding:4px 10px;cursor:pointer}
 .langs button+button::before{content:"";position:absolute;left:0;top:50%;width:1px;height:10px;margin-top:-5px;background:var(--line)}
@@ -516,7 +521,8 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
 <header class="hd">
   <div class="in">
     <a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#FF6A1A"/><g fill="#fff"><ellipse cx="11" cy="11.5" rx="2.4" ry="3"/><ellipse cx="21" cy="11.5" rx="2.4" ry="3"/><ellipse cx="7.2" cy="17" rx="2.1" ry="2.6"/><ellipse cx="24.8" cy="17" rx="2.1" ry="2.6"/><path d="M16 15.5c-3.6 0-7 4.6-7 7.4 0 2 1.6 2.8 3.3 2.8 1.5 0 2.4-.8 3.7-.8s2.2.8 3.7.8c1.7 0 3.3-.8 3.3-2.8 0-2.8-3.4-7.4-7-7.4z"/></g></svg><span id="site"></span></a>
-    <div class="langs" id="langs"></div>
+    <div class="hr"><a class="home" id="home" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span id="homeT"></span></a>
+    <div class="langs" id="langs"></div></div>
   </div>
 </header>
 <nav class="gnb" id="gnb"><div class="in"><div class="tabs" id="tabs"></div></div></nav>
@@ -1023,6 +1029,10 @@ function render() {
   const title = Array.isArray(t.title) ? t.title.join("") : (t.title || "");
   document.title = [t.site, title].filter(Boolean).join(" · ");
   $("#site").textContent = t.site || "";
+  const HOME_T = { kr: "공지 홈", en: "Notice Home", jp: "お知らせホーム" };
+  $("#homeT").textContent = HOME_T[L] || HOME_T.kr;
+  $("#home").href = "/?lang=" + L;   // 공지 홈으로 돌아가기(같은 언어)
+  $("#home").setAttribute("aria-label", HOME_T[L] || HOME_T.kr);
   $("#langs").innerHTML = LANGS.map(l => `<button type="button" data-l="${l}" lang="${HTML_LANG[l]}" class="${l === L ? "on" : ""}" aria-pressed="${l === L}">${LANG_NAME[l]}</button>`).join("");
   $("#ribbon").textContent = t.ribbon || "";
   $("#title").textContent = title;
