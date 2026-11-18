@@ -550,9 +550,8 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
   </div>
 </div>
 
-<script src="data.js"></script>
-<script src="pets.js"></script>
-<script src="photos.js"></script>
+<script>/* 내용 파일은 매번 새로 받는다 — 브라우저에 남은 옛 내용이 보이지 않게(11/18) */
+["data.js","pets.js","photos.js"].forEach(f => document.write('<script src="' + f + '?v=' + Date.now() + '"><\/script>'));</script>
 <script>
 (function () {
 "use strict";
