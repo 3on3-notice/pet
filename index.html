@@ -221,8 +221,10 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
 .cmp-r .new .arr{display:none}   /* 강조 칸 화살표 없앰 (#3) */
 .cmp .tag{display:none}
 .cmp-r b{font-weight:800}
-/* 좋아진 행: 항목 옆 배지 + 변경 칸 강조 (data 의 행 4번째 값 "up") */
+/* 개선·변경·유지 배지: 항목 옆 배지 + 변경 칸 강조 (data 의 행 4번째 값 "up") */
 .cmp-r .better{display:inline-block;margin-left:5px;vertical-align:1px;font-style:normal;font-size:10px;font-weight:700;line-height:15px;padding:0 4px;border-radius:3px;background:#FFE3D3;color:var(--or-d);white-space:nowrap}
+.cmp-r .better.t-change{background:#E3EEFF;color:#2557B8}
+.cmp-r .better.t-keep{background:#ECEEF1;color:#5B6472}
 .cmp-r.up .new{background:#FFF3EB;color:var(--or-d)}
 /* 접는 상자(기한) */
 .fold>summary{display:flex;align-items:center;gap:8px}
@@ -681,6 +683,8 @@ window.__icFail = img => {
 };
 
 /* ── 블록 ── */
+/* 비교표 항목 배지: data 행 4번째 값 up 개선 / change 변경 / keep 유지 (2026-11-18 사용자 지시 — "좋아진 점" 은 한국어 UI 에서 어색) */
+const CMP_TAG = { up: { kr: "개선", en: "Improved", jp: "改善" }, change: { kr: "변경", en: "Changed", jp: "変更" }, keep: { kr: "유지", en: "Kept", jp: "維持" } };
 const MENU_PHOTO = { "PET LINEUP": "lineup", "ADOPT PET": "adopt", "PET HOUSE": "house", "PET COMBINATION": "combination" };
 const hasPhotoBlock = k => ((N[L] || {}).chapters || []).some(c => (c.blocks || []).some(b => b.photo === k && b.type !== "img" && b.type !== "alert"));
 const noteHTML = n => !n ? "" : (Array.isArray(n) ? n : [n]).filter(Boolean).map(x => `<p class="note">※ ${x}</p>`).join("");   // 여러 줄이면 ※ 줄마다
@@ -706,7 +710,7 @@ const R = {
     const isNone = v => v == null || /^\s*[–—-]?\s*$/.test(String(v));
     const arr = '<svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';
     return box(b, `${descHTML(b.text)}<div class="cmp" role="table">${h.length ? `<div class="cmp-h" role="row"><span role="columnheader">${hk}</span><span role="columnheader">${ho}</span><span role="columnheader">${hn}</span></div>` : ""}${(b.rows || []).map(r =>
-      `<div class="cmp-r${r[3] === "up" ? " up" : ""}" role="row"><span class="k" role="rowheader">${r[0] || ""}${r[3] === "up" ? `<em class="better">${u.better || { kr: "좋아진 점", en: "Improved", jp: "改善" }[L] || "Improved"}</em>` : ""}</span><span class="old${isNone(r[1]) ? " none" : ""}" role="cell"><em class="tag">${ho}</em><span>${isNone(r[1]) ? u.none : r[1]}</span></span><span class="new" role="cell">${arr}<em class="tag">${hn}</em><span>${isNone(r[2]) ? u.none : r[2]}</span></span></div>`).join("")}</div>${noteHTML(b.note)}`);
+      `<div class="cmp-r${r[3] === "up" ? " up" : ""}" role="row"><span class="k" role="rowheader">${r[0] || ""}${CMP_TAG[r[3]] ? `<em class="better t-${r[3]}">${CMP_TAG[r[3]][L] || CMP_TAG[r[3]].en}</em>` : ""}</span><span class="old${isNone(r[1]) ? " none" : ""}" role="cell"><em class="tag">${ho}</em><span>${isNone(r[1]) ? u.none : r[1]}</span></span><span class="new" role="cell">${arr}<em class="tag">${hn}</em><span>${isNone(r[2]) ? u.none : r[2]}</span></span></div>`).join("")}</div>${noteHTML(b.note)}`);
   },
   menu: b => box(b, `<ul class="menu">${(b.items || []).map(m => {
     const inner = `<b>${m[0] || ""}</b>${m[1] ? `<span class="en">${m[1]}</span>` : ""}${m[2] ? `<p>${m[2]}</p>` : ""}`;
